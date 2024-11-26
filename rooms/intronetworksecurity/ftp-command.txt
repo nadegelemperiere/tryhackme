@@ -1,0 +1,3 @@
+user anonymous 
+get /secret.txt /work/secret.txt
+bye
