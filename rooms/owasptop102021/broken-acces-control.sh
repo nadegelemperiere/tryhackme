@@ -32,5 +32,5 @@ echo "Fetching protected resource..."
 curl -s -X GET "$target_ip/note.php?note_id=0" -b /work/cookie-bac.txt -H "Content-Type: application/json" -o /work/bac-flag.html -L -v
 
 # Clean up
-rm -f /work/cookie-bac.txt
+#rm -f /work/cookie-bac.txt
 echo "Done."
