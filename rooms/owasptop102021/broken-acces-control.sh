@@ -13,7 +13,7 @@ mkdir /work/
 
 # Authenticate and save the PHPSESSID cookie
 echo "Authenticating and capturing PHPSESSID..."
-curl -s -X POST "$target_ip" -c "/work/cookie-bac.txt" -H "Content-Type: application/x-www-form-urlencoded" -d "username=noot&password=test1234"
+curl -s -X POST "$target_ip" -c "/work/cookie-bac.txt" -L -H "Content-Type: application/x-www-form-urlencoded" -d "username=noot&password=test1234"
 
 # Extract the PHPSESSID
 PHPSESSID=$(grep PHPSESSID "/work/cookie-bac.txt" | awk '{print $7}')
