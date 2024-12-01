@@ -27,7 +27,7 @@ echo "--- DATA INTEGRITY FAILURE ---"
 
 # Initiate session
 echo "2.1 - INITIATING SESSION"
-curl -s -X GET "http://$target_ip:8089" -c "/work/8-cookies.txt" -L > /dev/null
+curl -s -X GET "http://$target_ip:8089" -c "/work/8-cookies.txt" -L
 PHPSESSID=$(grep PHPSESSID "/work/8-cookies.txt" | awk '{print $7}')
 echo "--> Session initiated : $PHPSESSID"
 
