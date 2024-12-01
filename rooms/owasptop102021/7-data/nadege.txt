@@ -1,11 +1,11 @@
 ----------------------------boundary
 Content-Disposition: form-data; name="user"
 
- nadege
+test
 -----------------------------boundary
 Content-Disposition: form-data; name="email"
 
-nadege@test.com
+test@test.com
 -----------------------------boundary
 Content-Disposition: form-data; name="pass"
 

