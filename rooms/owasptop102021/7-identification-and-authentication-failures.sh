@@ -39,7 +39,7 @@ echo "--> Flag is : $(sed -n ':a;N;$!ba;s/.*<p[^>]*>\(.*\)<\/p>.*/\1/p' /work/7-
 echo "4 - REGISTERING ARTHUR"
 curl -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -v -L \
      -H "Priority: u=0, i" \
-     -H "Origin: http://$target_ip" \
-     -H "Referer: http://$target_ip/register.php" \
+     -H "Origin: http://$target_ip:8088" \
+     -H "Referer: http://$target_ip:8088/register.php" \
      -H "Content-Type: multipart/form-data; boundary=-----------------------------346104398912025331583998084524" \
      --data-binary @${scriptpath}/7-data/nadege.txt
