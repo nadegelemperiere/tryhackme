@@ -11,10 +11,12 @@ attack_ip="10.10.30.237"
 # Prepare environment
 mkdir /work/
 
+# Initiate session
+curl -X GET "http://$target_ip" -c "/work/cookie-bac.txt" -L -v
+
 # Authenticate and save the PHPSESSID cookie
 echo "Authenticating and capturing PHPSESSID..."
-curl -X GET "http://$target_ip" -c "/work/cookie-bac.txt" -L -v
-curl -X POST "http://$target_ip" -b /work/cookie-bac.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "username=noot&password=test1234"
+curl -X POST "http://$target_ip" -b /work/cookie-bac.txt -L -v -H "Content-Type: application/x-www-form-urlencoded" -d "username=noot&password=test1234"
 
 # Extract the PHPSESSID
 PHPSESSID=$(grep PHPSESSID "/work/cookie-bac.txt" | awk '{print $7}')
