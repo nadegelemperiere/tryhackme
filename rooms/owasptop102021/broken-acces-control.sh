@@ -16,7 +16,7 @@ curl -X GET "http://$target_ip" -c "/work/cookie-bac.txt" -L -v
 
 # Authenticate and save the PHPSESSID cookie
 echo "Authenticating and capturing PHPSESSID..."
-curl -X POST "http://$target_ip" -b /work/cookie-bac.txt -L -v -H "Content-Type: application/x-www-form-urlencoded" -d "username=noot&password=test1234"
+curl -X POST "http://$target_ip" -b /work/cookie-bac.txt -L -v -H "Content-Type: application/x-www-form-urlencoded" -d "user=noot&pass=test1234"
 
 # Extract the PHPSESSID
 PHPSESSID=$(grep PHPSESSID "/work/cookie-bac.txt" | awk '{print $7}')
