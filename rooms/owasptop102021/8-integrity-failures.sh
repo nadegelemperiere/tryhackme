@@ -37,8 +37,8 @@ echo "--> Token retrieved : $TOKEN"
 
 # Decode / transform / encode token
 echo "2.3 - MODIFY TOKEN"
-HEADER=$(echo "$TOKEN" | awk -F. '{print $1}' | base64 -d | tr -d ' ' )
-PAYLOAD=$(echo "$TOKEN" | awk -F. '{print $2}' | base64 -d | tr -d ' ' )
+HEADER=$(echo "$TOKEN" | awk -F. '{print $1}' | base64 -d | tr -d '\n' )
+PAYLOAD=$(echo "$TOKEN" | awk -F. '{print $2}' | base64 -d | tr -d '\n' )
 echo "--> Decoded token header : $HEADER"
 echo "--> Decoded token payload : $PAYLOAD"
 
