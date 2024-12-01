@@ -18,4 +18,4 @@ mv jquery-1.12.4.min.js /work/8-jquery-1.12.4.min.js
 
 # Computing hash
 echo "2 - COMPUTING HASH"
-sha256sum /work/8-jquery-1.12.4.min.js
+openssl dgst -sha256 -binary /work/8-jquery-1.12.4.min.js | base64 | awk '{print "sha256-"$1}'
