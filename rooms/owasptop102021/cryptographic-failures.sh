@@ -27,8 +27,8 @@ echo $HASH > /work/hash.txt
 
 # Crack it with John
 rm /opt/john/john.pot 2>/dev/null
-/opt/john/john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt /work/hash.txt 2>/dev/null
-/opt/john/john --show /work/hash.txt 2>/dev/null
+/opt/john/john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt /work/hash.txt >/dev/null
+/opt/john/john --show /work/hash.txt >/dev/null
 PASSWORD=$(cat /opt/john/john.pot | awk -F':' '{print $2}')
 echo $PASSWORD
 
