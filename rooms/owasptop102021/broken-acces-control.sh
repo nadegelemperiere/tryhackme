@@ -14,19 +14,20 @@ mkdir /work/
 # Initiate session
 curl -X GET "http://$target_ip" -c "/work/cookie-bac.txt" -L -v
 
-# Authenticate and save the PHPSESSID cookie
-echo "Authenticating and capturing PHPSESSID..."
-curl -X POST "http://$target_ip" -b /work/cookie-bac.txt -L -v -H "Content-Type: application/x-www-form-urlencoded" -d "user=noot&pass=test1234"
-
 # Extract the PHPSESSID
 PHPSESSID=$(grep PHPSESSID "/work/cookie-bac.txt" | awk '{print $7}')
 
 # Check if the PHPSESSID was retrieved
 if [ -z "$PHPSESSID" ]; then
-    echo "Authentication failed. No PHPSESSID received."
+    echo "No PHPSESSID received."
     rm -f /work/cookie-bac.txt
     exit 1
 fi
+
+
+# Authenticate and save the PHPSESSID cookie
+echo "Authenticating and capturing PHPSESSID..."
+curl -X POST "http://$target_ip" -b /work/cookie-bac.txt -L -v -H "Content-Type: application/x-www-form-urlencoded" -d "user=noot" -d"pass=test1234"
 
 echo "Authentication successful. PHPSESSID: $PHPSESSID"
 
