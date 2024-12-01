@@ -23,19 +23,19 @@ mv jquery-1.12.4.min.js /work/8-jquery-1.12.4.min.js
 echo "1.2 - COMPUTING HASH"
 openssl dgst -sha256 -binary /work/8-jquery-1.12.4.min.js | base64 | awk '{print "sha256-"$1}'
 
-
 echo "--- DATA INTEGRITY FAILURE ---"
 
 # Initiate session
 echo "2.1 - INITIATING SESSION"
 curl -s -X GET "http://$target_ip:8089" -c "/work/8-cookies.txt" -L > /dev/null
-PHPSESSID=$(grep PHPSESSID "/work/cookies.txt" | awk '{print $7}')
+PHPSESSID=$(grep PHPSESSID "/work/8-cookies.txt" | awk '{print $7}')
 echo "--> Session initiated : $PHPSESSID"
 
 # Computing hash
 echo "2.2 - LOGIN AS GUEST AND GET TOKEN"
 response=$(curl -s -X POST "http://$target_ip:8089" -b /work/8-cookies.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "user=guest" -d"pass=guest")
 auth_token=$(echo "$response" | grep -oP 'X-Auth-Token: \K\S+')
+echo $auth_token
 
 
 
