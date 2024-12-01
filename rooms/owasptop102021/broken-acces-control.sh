@@ -28,7 +28,7 @@ echo "Session iniated. PHPSESSID: $PHPSESSID"
 
 # Authenticate
 echo "Authenticating and capturing PHPSESSID..."
-curl -X POST "http://$target_ip" -b /work/cookie-bac.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "user=noot" -d"pass=test1234"
+curl -X POST "http://$target_ip" -b /work/cookie-bac.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "user=noot" -d"pass=test1234" > ?/dev/null
 
 
 # Use the PHPSESSID for the next HTTP request
