@@ -39,8 +39,11 @@ echo "--> Token retrieved : $TOKEN"
 
 # Decode / transform / encode token
 echo "2.3 - MODIFY TOKEN"
-RAW=$(echo "$TOKEN" | tr -d '\n' | base64 -d)
-echo "--> Decoded token : $RAW"
+PART1=$(echo "$TOKEN" | awk -F. '{print $1}' | base64 -d)
+PART2=$(echo "$TOKEN" | awk -F. '{print $2}' | base64 -d)
+echo "--> Decoded token part 1 : $PART1"
+echo "--> Decoded token part 2 : $PART2"
+
 
 
 
