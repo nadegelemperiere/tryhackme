@@ -26,7 +26,6 @@ echo "--> Session initiated : $PHPSESSID"
 
 # Authenticate
 echo "2 - AUTHENTICATING"
-echo "Authenticating and capturing PHPSESSID..."
 curl -s -X POST "http://$target_ip" -b /work/cookie-bac.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "user=noot" -d"pass=test1234" > /dev/null
 
 
