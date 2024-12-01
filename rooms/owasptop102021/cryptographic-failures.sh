@@ -45,4 +45,4 @@ echo "Session initiated : $PHPSESSID"
 
 # Authenticate
 curl -s -X POST "http://$target_ip:81/login.php" -b /work/cookie-cf.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "user=admin" -d"pass=${PASSWORD}" > /work/cf-flag.html
-sed -n 's/.*<code>\(.*{.*}\)<\/code>.*/\1/p' /work/cf-flag.html
+echo "Flag is : $(sed -n 's/.*<code>\(.*{.*}\)<\/code>.*/\1/p' /work/cf-flag.html)"
