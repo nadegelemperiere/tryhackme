@@ -26,5 +26,5 @@ HASH=$(grep admin /work/users | awk -F'|' '{print $3}')
 echo $HASH > /work/hash.txt
 
 # Crack it with John
-john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt /work/hash.txt
-john --show /work/hash.txt
+/usr/bin/john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt /work/hash.txt
+/usr/bin/john --show /work/hash.txt
