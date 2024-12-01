@@ -19,4 +19,7 @@ mv webapp.db /work/webapp.db
 # Perform the query
 sqlite3 /work/webapp.db ".tables"
 sqlite3 /work/webapp.db "PRAGMA table_info(users)"
-sqlite3 /work/webapp.db "SELECT * FROM users;"
+sqlite3 /work/webapp.db "SELECT * FROM users;" > /work/users
+
+# Gather admin password
+grep admin /work/users | awk -F'|' '{print $3}'
