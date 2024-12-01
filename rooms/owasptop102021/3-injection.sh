@@ -5,8 +5,8 @@ script=$(readlink -f $0)
 scriptpath=`dirname $script`
 
 # Define host IP ( the machine to attack ) and remote IP ( the machine which supports the attack )
-target_ip="10.10.210.85"
-attack_ip="10.10.30.237"
+target_ip="10.10.195.209"
+attack_ip="10.10.113.137"
 
 # Prepare environment
 mkdir /work/ 2>/dev/null
