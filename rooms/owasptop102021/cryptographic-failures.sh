@@ -22,4 +22,5 @@ sqlite3 /work/webapp.db "PRAGMA table_info(users)"
 sqlite3 /work/webapp.db "SELECT * FROM users;" > /work/users
 
 # Gather admin password
-grep admin /work/users | awk -F'|' '{print $3}'
+HASH=$(grep admin /work/users | awk -F'|' '{print $3}')
+echo $HASH
