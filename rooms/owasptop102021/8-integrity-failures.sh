@@ -33,7 +33,7 @@ echo "--> Session initiated : $PHPSESSID"
 
 # Computing hash
 echo "2.2 - LOGIN AS GUEST AND GET TOKEN"
-curl -s -X POST "http://$target_ip:8089/login" -c "/work/8-cookies.txt" -L -H "Content-Type: application/x-www-form-urlencoded" -d "user=guest" -d "pass=guest"
+curl -s -X POST "http://$target_ip:8089/login" -c "/work/8-cookies.txt" -H "Content-Type: application/x-www-form-urlencoded" -d "user=guest" -d "pass=guest"
 auth_token=$(cat /work/8-cookies.txt | grep -oP 'X-Auth-Token: \K\S+')
 echo $auth_token
 
