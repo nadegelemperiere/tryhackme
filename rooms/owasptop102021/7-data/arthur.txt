@@ -1,0 +1,17 @@
+----------------------------boundary
+Content-Disposition: form-data; name="user"
+
+ darren
+-----------------------------boundary
+Content-Disposition: form-data; name="email"
+
+darren@test.com
+-----------------------------boundary
+Content-Disposition: form-data; name="pass"
+
+test
+-----------------------------boundary
+Content-Disposition: form-data; name="submit"
+
+Register
+-----------------------------boundary--

