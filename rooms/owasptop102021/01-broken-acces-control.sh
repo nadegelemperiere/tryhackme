@@ -6,7 +6,7 @@ scriptpath=`dirname $script`
 
 # Define host IP ( the machine to attack ) and remote IP ( the machine which supports the attack )
 target_ip="10.10.68.196"
-attack_ip="10.10.239.245"
+attack_ip="10.10.190.240"
 
 # Prepare environment
 mkdir /work/
