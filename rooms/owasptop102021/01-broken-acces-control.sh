@@ -9,7 +9,7 @@ target_ip="10.10.68.196"
 attack_ip="10.10.190.240"
 
 # Prepare environment
-mkdir /work/
+mkdir /work/ 2>/dev/null
 
 # Initiate session
 echo "1 - INITIATING SESSION"
