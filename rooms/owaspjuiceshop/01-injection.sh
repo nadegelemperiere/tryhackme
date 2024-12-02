@@ -22,7 +22,7 @@ curl -s -X GET "http://$target_ip/rest/admin/application-configuration" -b "/wor
 curl -s -X GET "http://$target_ip/rest/languages" -b "/work/1-cookies.txt" -L > /dev/null
 curl -s -X GET "http://$target_ip/api/Challenges/?name=Score%20Board" -b "/work/1-cookies.txt" -L > /dev/null
 
-curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7d5_o" -b "/work/1-cookies.txt" -L
+curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7d6Aw" -b "/work/1-cookies.txt" -L
 
 # Authenticate using SQL injection session
 echo "2 - AUTHENTICATE THROUGH INJECTION"
