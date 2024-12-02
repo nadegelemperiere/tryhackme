@@ -27,4 +27,5 @@ echo -e "\n$target_ip\tFALSE\t/\tFALSE\t0\ttoken\t$TOKEN" >> /work/1-cookies.txt
 echo -e "\n$target_ip\tFALSE\t/\tFALSE\t0\tlanguage\ten" >> /work/1-cookies.txt
 
 # Gather authentication token
+curl -s -X GET "http://$target_ip/rest/user/whoami" -b "/work/1-cookies.txt" -v -L
 curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7dLN0&sid=$IO" -b "/work/1-cookies.txt" -v -L
