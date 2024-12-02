@@ -15,7 +15,7 @@ mkdir /work/ 2>/dev/null
 echo "1 - RETRIEVING CONVERTED FILES"
 curl -s -X GET "http://$target_ip/download" -L -o /work/01-download.zip > /dev/null
 mkdir /work/01-download
-unzip /work/01-download.zip -d /work/01-download/
+unzip -o /work/01-download.zip -d /work/01-download/
 echo "--> song.mp3 : $(file /work/01-download/song.mp3)"
 echo "--> somg.mp3 : $(file /work/01-download/somg.mp3)"
-echo "--> somg.mp3 : $(exiftool /work/01-download/somg.mp3)"
+exiftool /work/01-download/somg.mp3 > /work/10-somg.txt
