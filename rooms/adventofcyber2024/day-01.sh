@@ -23,6 +23,7 @@ unzip -o /work/01-download.zip -d /work/01-download/
 echo "--> song.mp3 : $(file /work/01-download/song.mp3)"
 echo "--> somg.mp3 : $(file /work/01-download/somg.mp3)"
 exiftool /work/01-download/somg.mp3 > /work/10-somg.txt
+exiftool /work/01-download/song.mp3 > /work/10-song.txt
 
 # Gather malware code
 echo "3 - COLLECTING MALWARE CODE"
