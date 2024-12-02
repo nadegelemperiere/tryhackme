@@ -17,7 +17,11 @@ curl -s -X GET "http://$target_ip" -c "/work/1-cookies.txt" -L > /dev/null
 curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7d5_o" -c "/work/1-cookies.txt" -L
 IO=$(grep io "/work/1-cookies.txt" | awk '{print $7}')
 echo "--> Session initiated with cookie IO ${IO}"
-sleep 3
+curl -s -X GET "http://$target_ip/rest/admin/application-version" -b "/work/1-cookies.txt" -L
+curl -s -X GET "http://$target_ip/rest/admin/application-configuration" -b "/work/1-cookies.txt" -L
+curl -s -X GET "http://$target_ip/rest/languages" -b "/work/1-cookies.txt" -L
+curl -s -X GET "http://$target_ip/api/Challenges/?name=Score%20Board" -b "/work/1-cookies.txt" -L
+
 curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7d5_o" -b "/work/1-cookies.txt" -L
 
 # Authenticate using SQL injection session
