@@ -27,6 +27,7 @@ TOKEN=$(jq -r '.authentication.token' /work/1-admin.json)
 echo "--> Authenticated with token ${TOKEN}"
 echo -e "\n$target_ip\tFALSE\t/\tFALSE\t0\ttoken\t$TOKEN" >> /work/1-cookies.txt
 echo -e "\n$target_ip\tFALSE\t/\tFALSE\t0\tlanguage\ten" >> /work/1-cookies.txt
+echo -e "\n$target_ip\tFALSE\t/\tFALSE\t0\tcookieconsent_status\tdismiss" >> /work/1-cookies.txt
 
 # Gather authentication token
 curl -s -X GET "http://$target_ip/rest/user/whoami" -b "/work/1-cookies.txt" -v -L
