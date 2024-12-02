@@ -32,3 +32,5 @@ echo -e "\n$target_ip\tFALSE\t/\tFALSE\t0\tcookieconsent_status\tdismiss" >> /wo
 # Gather authentication token
 curl -s -X GET "http://$target_ip/rest/user/whoami" -b "/work/1-cookies.txt" -v -L
 curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7dLN0&sid=$IO" -b "/work/1-cookies.txt" -v -L
+curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7dLN0&sid=$IO" -b "/work/1-cookies.txt" -v -L
+curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7dLN0&sid=$IO" -b "/work/1-cookies.txt" -v -L
