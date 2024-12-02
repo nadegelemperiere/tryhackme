@@ -17,6 +17,8 @@ curl -s -X GET "http://$target_ip" -L > /dev/null
 curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7d5_o" -c "/work/1-cookies.txt" -L
 IO=$(grep io "/work/1-cookies.txt" | awk '{print $7}')
 echo "--> Session initiated with cookie IO ${IO}"
+echo -e "\n$target_ip\tFALSE\t/\tFALSE\t0\tlanguage\ten" >> /work/1-cookies.txt
+echo -e "\n$target_ip\tFALSE\t/\tFALSE\t0\tcookieconsent_status\tdismiss" >> /work/1-cookies.txt
 sleep 2
 curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7d6Aw&sid=$IO" -b "/work/1-cookies.txt" -L
 
@@ -26,8 +28,6 @@ curl -s -X POST "http://$target_ip/rest/user/login" -b "/work/1-cookies.txt" -L 
 TOKEN=$(jq -r '.authentication.token' /work/1-admin.json)
 echo "--> Authenticated with token ${TOKEN}"
 echo -e "\n$target_ip\tFALSE\t/\tFALSE\t0\ttoken\t$TOKEN" >> /work/1-cookies.txt
-echo -e "\n$target_ip\tFALSE\t/\tFALSE\t0\tlanguage\ten" >> /work/1-cookies.txt
-echo -e "\n$target_ip\tFALSE\t/\tFALSE\t0\tcookieconsent_status\tdismiss" >> /work/1-cookies.txt
 
 # Gather authentication token
 curl -s -X GET "http://$target_ip/rest/user/whoami" -b "/work/1-cookies.txt" -v -L
