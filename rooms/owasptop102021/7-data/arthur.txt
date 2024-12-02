@@ -1,0 +1,17 @@
+----------------------------346104398912025331583998084524
+Content-Disposition: form-data; name="user"
+
+ arthur
+----------------------------346104398912025331583998084524
+Content-Disposition: form-data; name="email"
+
+arthur@test.com
+----------------------------346104398912025331583998084524
+Content-Disposition: form-data; name="pass"
+
+test
+----------------------------346104398912025331583998084524
+Content-Disposition: form-data; name="submit"
+
+Register
+----------------------------346104398912025331583998084524--

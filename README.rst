@@ -23,6 +23,25 @@ LINUX
 
 .. _`[1]`: https://gtfobins.github.io/
 
+EXPLOITS
+--------
+`[1]`_ - A database of exploits
+`[2]`_ - MITRE exploits database
+`[3]`_ - NIST exploits database
+`[4]`_ - Another database for exploits
+
+
+.. _`[1]`: https://www.exploit-db.com/
+.. _`[2]`: https://cve.mitre.org/
+.. _`[3]`: https://nvd.nist.gov/vuln/search
+.. _`[4]`: https://www.cvedetails.com/
+
+TOOLS
+-----
+`[1]`_ - Nmap filters list
+
+.. _`[1]`: https://nmap.org/nsedoc/
+
 
 Contact
 =======
