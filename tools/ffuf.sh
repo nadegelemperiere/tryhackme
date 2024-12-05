@@ -6,7 +6,7 @@ scriptpath=`dirname $script`
 
 # Parse arguments from flags
 target_url=""
-output_file="gobuster.txt"
+output_file="ffuf.txt"
 additional_options=""
 pattern="*.txt"
 threads=10
@@ -27,7 +27,7 @@ directories=(
 )
 
 # Gobuster options
-gobuster_options="--quiet --follow-redirect -w {WORDLIST} -u http://$target_url -t $threads $additional_options -o temp_result.txt"
+ffuf_options="-w {WORDLIST} -u http://$target_url/FUZZ -t $threads $additional_options -o temp_result.txt"
 
 
 # Temporary file for intermediate results
@@ -45,11 +45,10 @@ for dir in "${directories[@]}"; do
         if [[ -f "$wordlist" ]]; then
             echo "Using wordlist: $wordlist"
             # Replace {WORDLIST} in gobuster options with the current wordlist
-            options=$(echo "$gobuster_options" | sed "s|{WORDLIST}|$wordlist|")
+            options=$(echo "$ffuf_options" | sed "s|{WORDLIST}|$wordlist|")
             
             # Run gobuster and append results to the temp file
-            echo $options
-            gobuster dir $options
+            ffuf $options
             if [[ -f "temp_result.txt" ]]; then
                 cat temp_result.txt >> "$temp_file"
                 rm temp_result.txt
