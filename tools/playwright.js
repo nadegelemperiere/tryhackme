@@ -48,7 +48,6 @@ function parseCurlCookies(filePath) {
         console.error(`Loading cookies from ${cookiesFile}`);
         const cookies = parseCurlCookies(cookiesFile);
         await context.addCookies(cookies);
-        const cookies2 = await context.cookies();
     
     } else {
 
