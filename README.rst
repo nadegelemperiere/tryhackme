@@ -40,9 +40,11 @@ TOOLS
 -----
 `[1]`_ - Nmap filters list
 `[2]`_ - Reverse shell for all languages
+`[3]`_ - Payloads
 
 .. _`[1]`: https://nmap.org/nsedoc/
 .. _`[2]`: https://swisskyrepo.github.io/InternalAllTheThings/cheatsheets/shell-reverse-cheatsheet/#summary
+.. _`[3]`: https://github.com/swisskyrepo/PayloadsAllTheThings
 
 
 Contact

