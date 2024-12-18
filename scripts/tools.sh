@@ -36,3 +36,8 @@ chmod +x /usr/local/bin/openstego/openstego.sh
 
 
 apt install -y sherlock
+apt install -y oathtool
+apt install -y keepassxc-full
+apt install -y parallel
+
+
