@@ -41,10 +41,12 @@ TOOLS
 `[1]`_ - Nmap filters list
 `[2]`_ - Reverse shell for all languages
 `[3]`_ - Payloads
+`[4]`_ - Pentest Monkey
 
 .. _`[1]`: https://nmap.org/nsedoc/
 .. _`[2]`: https://swisskyrepo.github.io/InternalAllTheThings/cheatsheets/shell-reverse-cheatsheet/#summary
 .. _`[3]`: https://github.com/swisskyrepo/PayloadsAllTheThings
+.. _`[4]`: https://web.archive.org/web/20200901140719/http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
 
 
 Contact
