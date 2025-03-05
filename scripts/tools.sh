@@ -12,6 +12,13 @@ systemctl enable docker --now
 # Install essential tools
 apt install -y file jq p7zip-full parallel openjdk-23-jdk
 
+# Samba mounting
+apt install nfs-common
+
+apt install dos2unix
+
+apt install python2
+
 # ----------------------
 # Exploitation Frameworks
 # ----------------------
