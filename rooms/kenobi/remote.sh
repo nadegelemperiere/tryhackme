@@ -20,7 +20,7 @@ smbclient  //$target_ip/anonymous --no-pass --command "get ./log.txt $result_fol
 USERNAME=$(cat $result_folder/log.txt | sed -n '0,/User/s/User *\([^ ]*\).*/\1/p' | tr -d '[:space:]')
 echo "Username is '$USERNAME'"
 # Scan rpcbind port 
- nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount $target_ip > $result_folder/rpc.txt
+nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount $target_ip > $result_folder/rpc.txt
 
 echo "2 - INTRUSION"
 # Copy private ssh key in samba mount
