@@ -58,7 +58,19 @@ echo "6 - DARK ENCRYPTOR 2"
 #curl -s -X GET http:/$target_ip/uploads/$SHELL?cmd=find+/+-type+f+-name+"flag.txt" -o $result_folder/path.txt
 
 echo "7 - ORDER"
-# Key is  01010011 01001110 01000101 01000001 01001011 01011001 (SNEAKY), leading to ORDER: Attack at dawn. Target: THM{the_hackfinity_highschool}.
+TEXT="1c1c01041963730f31352a3a386e24356b3d32392b6f6b0d323c22243f63731a0d0c302d3b2b1a292a3a38282c2f222d2a112d282c31202d2d2e24352e60"
+KNOWN="ORDER:"
+python3 $scriptpath/xor.py $TEXT $KNOWN
 points=$((points + 30))
+
+echo "8 - DARK MATTER"
+# In /tmp, there is the public key which is weak. Using factor db, we find that 340282366920938460843936948965011886881 = 18446744073709551533 · 18446744073709551557 which are prime numbers
+# therefore the private key is d = pow(65537, -1, (18446744073709551533 - 1) * (18446744073709551557 - 1)) 
+curl -X GET https://factordb.com/index.php?query=3402823669209384608439369489 -o $result_folder/factor.html
+points=$((points + 30))
+
+echo "9 - GHOST PHISHING"
+wget https://github.com/martinsohn/Office-phish-templates/raw/refs/heads/main/Word.docx -O $result_folder/phishing.docx
+
 
 echo "Current score : $points"
