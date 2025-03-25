@@ -1,0 +1,4 @@
+
+
+# 1 - Writing IDS rules http
+alert icmp any 80 <> any 80  (msg: "DETECT ALL TCP PACKETS FROM OR TO PORT 80"; sid: 100001; rev:1;)
